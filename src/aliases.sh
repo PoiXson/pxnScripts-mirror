@@ -147,6 +147,7 @@ alias pinga='clear;\ping -A -D'
 alias ping8='clear;\ping -A -D 8.8.8.8'
 alias mtr='\mtr -4 -b'
 alias mtr8='\mtr -4 -b 8.8.8.8'
+alias pssh='pingssh'
 
 
 # iptables aliases
