@@ -144,52 +144,68 @@ alias ports='\netstat -nape --inet'
 alias ping='clear;\ping'
 alias pinga='clear;\ping -A -D'
 alias ping8='clear;\ping -A -D 8.8.8.8'
-alias mtr='\mtr -4 -b'
-alias mtr8='\mtr -4 -b 8.8.8.8'
+if [ -e /usr/sbin/mtr ]; then
+	alias mtr='\mtr -4 -b'
+	alias mtr8='\mtr -4 -b 8.8.8.8'
+fi
 alias pssh='pingssh'
 
 
 # iptables aliases
-alias fwl='iptables -L -v'
-alias fwf='iptables -F;iptables -P INPUT ACCEPT;iptables -P OUTPUT ACCEPT;iptables -P FORWARD ACCEPT'
+if [ -e /usr/sbin/iptables ]; then
+	alias fwl='\iptables -L -v'
+	alias fwf='\iptables -F;iptables -P INPUT ACCEPT;iptables -P OUTPUT ACCEPT;iptables -P FORWARD ACCEPT'
+fi
 
 
 # development
 alias countlines='\find . -name "*.java" | xargs wc -l'
-alias mvnv='mvn versions:display-dependency-updates'
-alias gem='gem -V'
+if [ -e /usr/bin/mvn ]; then
+	alias mvnv='mvn versions:display-dependency-updates'
+fi
+if [ -e /usr/bin/gem ]; then
+	alias gem='gem -V'
+fi
 
 
 # git aliases
-alias gg='/usr/libexec/git-core/git-gui'
-alias gge='gg && exit $?'
-alias gits='clear;git status'
-alias gitm='git mergetool'
+if [ -e /usr/bin/git ]; then
+	alias gg='/usr/libexec/git-core/git-gui'
+	alias gge='gg && exit $?'
+	alias gits='clear;git status'
+	alias gitm='git mergetool'
+fi
 
 
 # gradle aliases
-alias g='clear;gradle --daemon'
-alias ge='clear;gradle --daemon cleanEclipse eclipse'
+if [ -e /usr/bin/gradle ]; then
+	alias g='clear;gradle --daemon'
+	alias ge='clear;gradle --daemon cleanEclipse eclipse'
+fi
 
 
 # iscsi tools
 #http://www.server-world.info/en/note?os=Fedora_20&p=iscsi
-alias lstgt='clear;tgtadm --mode target --op show'
+if [ -e /usr/sbin/tgtadm ]; then
+	alias lstgt='clear;tgtadm --mode target --op show'
+fi
 
 
 # zfs aliases
-alias z='zpool iostat -v 2>&1 | sed "/^\s*$/d" ; zpool status 2>&1 | sed "/^\s*$/d" | grep -v errors\:\ No\ known\ data\ errors ; echo ; df -h ; zfs get compressratio 2>&1 | grep --invert-match --color=none 1.00'
-alias wz='watch "zpool iostat -v 2>&1 | sed \"/^\s*$/d\" ; zpool status 2>&1 | sed \"/^\\s*$/d\" | grep -v \"errors: No known data errors\" ; echo ; df -h ; zfs get compressratio 2>&1 | grep --invert-match --color=none 1.00"'
-alias zfree='watch -n0.5 zpool get freeing'
-alias zfrag='zpool get fragmentation'
+if [ -e /usr/sbin/zpool ]; then
+	alias z='zpool iostat -v 2>&1 | sed "/^\s*$/d" ; zpool status 2>&1 | sed "/^\s*$/d" | grep -v errors\:\ No\ known\ data\ errors ; echo ; df -h ; zfs get compressratio 2>&1 | grep --invert-match --color=none 1.00'
+	alias wz='watch "zpool iostat -v 2>&1 | sed \"/^\s*$/d\" ; zpool status 2>&1 | sed \"/^\\s*$/d\" | grep -v \"errors: No known data errors\" ; echo ; df -h ; zfs get compressratio 2>&1 | grep --invert-match --color=none 1.00"'
+	alias zfree='watch -n0.5 zpool get freeing'
+	alias zfrag='zpool get fragmentation'
+	# snapshot aliases
+	alias snapshots='clear;zfs list -t snapshot'
+	alias snaps='snapshots'
+	alias wsnaps='watch -d -n10 "snapshots;echo;df -h"'
+	alias wsnap='wsnaps'
+fi
 #alias zstatus='zpool status -x'
-# snapshot aliases
-alias snapshots='clear;zfs list -t snapshot'
-alias snaps='snapshots'
-alias wsnaps='watch -d -n10 "snapshots;echo;df -h"'
-alias wsnap='wsnaps'
 
 
 # shutdown/reboot
-alias reboot='clear ; echo ; hostname ; ip addr show | grep --color=never "inet " | grep -v "127.0.0.1" | awk '"'"'{print $2}'"'"' ; yesno.sh "Reboot?"   --timeout 10 --default y && shutdown -r now'
-alias stop='  clear ; echo ; hostname ; ip addr show | grep --color=never "inet " | grep -v "127.0.0.1" | awk '"'"'{print $2}'"'"' ; yesno.sh "Shutdown?" --timeout 10 --default y && shutdown -h now'
+alias reboot='echo ; hostname ; ip addr show | grep --color=never "inet " | grep -v "127.0.0.1" | awk '"'"'{print $2}'"'"' ; yesno.sh "Reboot?"   --timeout 10 --default y && shutdown -r now'
+alias stop='echo ; hostname ; ip addr show | grep --color=never "inet " | grep -v "127.0.0.1" | awk '"'"'{print $2}'"'"' ; yesno.sh "Shutdown?" --timeout 10 --default y && shutdown -h now'
