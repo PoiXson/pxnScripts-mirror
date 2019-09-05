@@ -53,11 +53,11 @@ echo "Install.."
 	"%{buildroot}%{_sysconfdir}/profile.d/"  \
 		|| exit 1
 # copy files
-%{__install} -m 0555 \
-	"src/*.sh" \
-	"%{buildroot}%{prefix}/" \
-		|| exit 1
-
+\pushd "%{_topdir}/../" || exit 1
+	%{__install} -m 0555  src/*.sh  "%{buildroot}%{prefix}/"  || exit 1
+	%{__install} -m 0555  src/iptop.pl  "%{buildroot}%{prefix}/"  || exit 1
+	%{__rm} -fv "%{buildroot}%{prefix}/install-zfs.sh"
+\popd
 
 
 ### Check ###
@@ -67,22 +67,17 @@ echo "Install.."
 
 ### Clean ###
 %clean
-if [ ! -z "%{_topdir}" ]; then
-	%{__rm} -rf --preserve-root "%{_topdir}" \
-		|| { echo "Failed to delete build root!" ; exit 1 ; }
-fi
 
 
 
 ### post install ###
-%post dev
+%post
 # create symlinks
 for SCRIPT_FILE in \
 	build-rpm       \
 	chmodr          \
 	chownr          \
 	forever         \
-	iptop           \
 	ethtop          \
 	mklinkrel       \
 	monitorhost     \
@@ -94,8 +89,11 @@ for SCRIPT_FILE in \
 	; do
 		%{__ln_s} -f \
 			"%{prefix}/$SCRIPT_FILE.sh" \
-			"%{buildroot}%{_bindir}/$SCRIPT_FILE"
+			"%{_bindir}/$SCRIPT_FILE"
 done
+%{__ln_s} -f \
+	"%{prefix}/iptop.pl" \
+	"%{_bindir}/iptop"
 # create profile.d symlink
 %{__ln_s} -f \
 	"%{prefix}/profile.sh" \
@@ -104,7 +102,7 @@ done
 
 
 ### post uninstall ###
-%postun dev
+%postun
 # remove symlinks
 for SCRIPT_FILE in \
 	build-rpm       \
@@ -149,17 +147,6 @@ done
 %{prefix}/sshkeygen.sh
 %{prefix}/timestamp.sh
 %{prefix}/yesno.sh
-%{_bindir}/build-rpm
-%{_bindir}/chmodr
-%{_bindir}/chownr
-%{_bindir}/forever
-%{_bindir}/iptop
-%{_bindir}/ethtop
-%{_bindir}/mklinkrel
-%{_bindir}/monitorhost
-%{_bindir}/pingssh
-%{_bindir}/progresspercent
-%{_bindir}/sshkeygen
-%{_bindir}/timestamp
-%{_bindir}/yesno
-%{_sysconfdir}/profile.d/pxn-profile.sh
+
+%files dev
+%defattr(-,root,root,-)
