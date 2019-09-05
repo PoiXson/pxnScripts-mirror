@@ -91,12 +91,12 @@ display_stats() {
 
 echo
 # find longest string
-MAX_LEN=0
+#MAX_LEN=0
 for IF in ${INTERFACES[@]}; do
-	LEN=$( echo -n "$IF" | wc -m )
-	if [ $LEN -gt $MAX_LEN ]; then
-		MAX_LEN=$LEN
-	fi
+#	LEN=$( echo -n "$IF" | wc -m )
+#	if [ $LEN -gt $MAX_LEN ]; then
+#		MAX_LEN=$LEN
+#	fi
 	LAST_BW_RX+=$( cat /sys/class/net/"$IF"/statistics/rx_bytes )
 	LAST_BW_TX+=$( cat /sys/class/net/"$IF"/statistics/tx_bytes )
 	LAST_PPS_RX+=$( cat /sys/class/net/"$IF"/statistics/rx_packets )
@@ -121,7 +121,7 @@ while true; do
 	INDEX=0
 	for IF in ${INTERFACES[@]}; do
 #		LEN=$( echo -n "$IF" | wc -m )
-#		PAD_LEN=$(($MAX_LEN - $LEN))
+#		PAD_LEN=$(( $MAX_LEN - $LEN ))
 #		PAD=$(printf "%${PAD_LEN}s")
 #		echo -n " $IF $PAD- "
 		display_stats $INDEX $IF
