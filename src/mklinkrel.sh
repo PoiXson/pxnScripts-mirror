@@ -1,15 +1,10 @@
 #!/bin/bash
 ##===============================================================================
-## Copyright (c) 2013-2016 PoiXson, Mattsoft
-## <http://poixson.com> <http://mattsoft.net>
+## Copyright (c) 2013-2019 PoiXson, Mattsoft
+## <https://poixson.com> <https://mattsoft.net>
 ## Released under the GPL 3.0
 ##
 ## Description: Creates a relative symbolic link.
-##
-## Install to location: /usr/bin/shellscripts
-##
-## Download the original from:
-##   http://dl.poixson.com/shellscripts/
 ##
 ## Usage: mklinkrel <link_target> <create_here> <link_name>
 ##

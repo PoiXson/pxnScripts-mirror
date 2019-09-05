@@ -1,15 +1,10 @@
 #!/bin/bash
 ##===============================================================================
-## Copyright (c) 2013-2016 PoiXson, Mattsoft
-## <http://poixson.com> <http://mattsoft.net>
+## Copyright (c) 2013-2019 PoiXson, Mattsoft
+## <https://poixson.com> <https://mattsoft.net>
 ## Released under the GPL 3.0
 ##
 ## Description: Changes owner/group ownership of files and directories recursively.
-##
-## Install to location: /usr/bin/shellscripts
-##
-## Download the original from:
-##   http://dl.poixson.com/shellscripts/
 ##
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
