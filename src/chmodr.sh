@@ -22,13 +22,13 @@
 # chmodr.sh
 
 
-if [[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]]; then
+if [ $# -lt 3 ]; then
 	echo
-	echo 'usage: $0 <dir perm> <file perm> <path>'
+	echo "usage: $0 <dir perm> <file perm> <path>"
 	echo
-	echo 'e.g. $0 755 644 ./'
+	echo "e.g. $0 0755 0644 ./"
 	echo
-	echo 'sets dir perms to 755 and file perms to 644 recursively'
+	echo "sets dir perms to 0755 and file perms to 0644 recursively"
 	echo
 	exit 1
 fi

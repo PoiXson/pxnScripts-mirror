@@ -22,13 +22,13 @@
 # chownr.sh
 
 
-if [[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]]; then
+if [ $# -ne 3 ]; then
 	echo
-	echo 'usage: $0 <dir o:g> <file o:g> <path>'
+	echo "usage: $0 <dir o:g> <file o:g> <path>"
 	echo
-	echo 'e.g. $0 user:wheel user:wheel ./'
+	echo "e.g. $0 user:wheel user:wheel ./"
 	echo
-	echo 'sets dir owner/group to user:wheel as well as for files, recursively'
+	echo "sets dir owner/group to user:wheel as well as for files, recursively"
 	echo
 	exit 1
 fi

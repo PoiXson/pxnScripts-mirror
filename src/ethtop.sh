@@ -5,11 +5,11 @@ clear
 
 display_help() {
 	echo
-	echo usage: $0 [network-interface]
+	echo "usage: $0 [network-interface]"
 	echo
-	echo e.g. $0 eth0
+	echo "e.g. $0 eth0"
 	echo
-	exit 0
+	exit 1
 }
 
 
