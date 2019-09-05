@@ -97,7 +97,7 @@ done
 # create profile.d symlink
 %{__ln_s} -f \
 	"%{prefix}/profile.sh" \
-	"%{buildroot}%{_sysconfdir}/profile.d/pxn-profile.sh"
+	"%{_sysconfdir}/profile.d/shellscripts.sh"
 
 
 
@@ -123,8 +123,8 @@ for SCRIPT_FILE in \
 			&& %__rm -f  "%{_bindir}/$SCRIPT_FILE"
 done
 # remove profile.d symlink
-[ -h "%{_sysconfdir}/profile.d/pxn-profile.sh" ] \
-	&& %__rm -f  "%{_sysconfdir}/profile.d/pxn-profile.sh"
+[ -h "%{_sysconfdir}/profile.d/shellscripts.sh" ] \
+	&& %__rm -f  "%{_sysconfdir}/profile.d/shellscripts.sh"
 
 
 
