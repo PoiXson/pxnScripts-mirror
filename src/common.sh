@@ -23,13 +23,6 @@
 
 
 
-# ensure path is set
-if [[ ":${PATH}:" != *:/usr/bin/shellscripts:* ]]; then
-	export PATH="/usr/bin/shellscripts:$PATH"
-fi
-
-
-
 BIN_PHP=`which php-cli 2>/dev/null`
 if [ -z ${BIN_PHP} ]; then
 	if [ -f /usr/bin/php ]; then
