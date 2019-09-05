@@ -34,7 +34,7 @@ alias ....='cd ../../..'
 
 # exit/kill aliases
 alias e='exit'
-alias killall='killall -v'
+alias killall='\killall -v'
 alias k='killall'
 alias c='clear'
 alias kk='konsole && exit $?'
@@ -42,17 +42,17 @@ alias kk='konsole && exit $?'
 
 
 # file aliases
-alias rm='rm -v -i --preserve-root'
-alias cp='cp -v -i'
-alias mv='mv -v -i'
+alias rm='\rm -v -i --preserve-root'
+alias cp='\cp -v -i'
+alias mv='\mv -v -i'
 alias cwd='pwd'
 alias ccat='clear;cat'
-alias untar='tar -zxvf'
+alias untar='\tar -zxvf'
 alias scp='scp -C'
 
 
 # list file aliases
-alias ls='ls -A --color=auto'
+alias ls='\ls -A --color=auto'
 alias ll='ls -lhs'
 
 alias ls.='ls -d .*'
@@ -74,9 +74,9 @@ alias lk='ls -lSr'
 
 
 # ch-permission aliases
-alias chmod='chmod -c --preserve-root'
-alias chown='chown -c --preserve-root'
-alias chgrp='chgrp -c --preserve-root'
+alias chmod='\chmod -c --preserve-root'
+alias chown='\chown -c --preserve-root'
+alias chgrp='\chgrp -c --preserve-root'
 
 
 # parse aliases
@@ -85,10 +85,10 @@ alias diff='colordiff'
 
 
 # date/time aliases
-alias timenow='date +"%T"'
-alias datenow='date +"%Y-%m-%d"'
-alias datetime='date +"%Y-%m-%d %T"'
-alias dayofyear='date +"%j"'
+alias timenow='\date +"%T"'
+alias datenow='\date +"%Y-%m-%d"'
+alias datetime='\date +"%Y-%m-%d %T"'
+alias dayofyear='\date +"%j"'
 
 
 # watch aliases
@@ -103,13 +103,14 @@ alias wtime='watch -n0.2 date'
 
 
 # disk space aliases
-alias df='df -h'
-alias dfi='df -i'
+alias df='\df -h'
+alias dfi='\df -i'
 alias wdf='watch -d -n1 "df -h;echo;df -i"'
 alias cdu='clear;du -sch *'
-alias du1='du -h --max-depth=1'
-alias du2='du -h --max-depth=2'
-alias du3='du -h --max-depth=3'
+alias du='\du -h'
+alias du1='\du -h --max-depth=1'
+alias du2='\du -h --max-depth=2'
+alias du3='\du -h --max-depth=3'
 
 
 # screen aliases
@@ -130,17 +131,17 @@ alias kernels='CURRENT_KERNEL=`uname -r` ; rpm -qav | grep kernel-[2-4] | sort -
 alias s='sudo su'
 alias S='sudo su -'
 alias bmdisk='time dd if=/dev/zero of=$PWD/test.file bs=1M count=10000;ll $PWD/test.file;rm $PWD/test.file'
-alias syncmem='sudo -s -- sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"'
+alias syncmem='\sudo -s -- sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"'
 alias synctop='syncmem & htop'
 alias hist='clear;history | grep $1'
 alias psaux='ps auxf'
 alias header='curl -I'
 # alias ports='netstat -tulanp'
-alias ports='netstat -nape --inet'
+alias ports='\netstat -nape --inet'
 
 
 # ping/mtr
-alias ping='clear;ping'
+alias ping='clear;\ping'
 alias pinga='clear;\ping -A -D'
 alias ping8='clear;\ping -A -D 8.8.8.8'
 alias mtr='\mtr -4 -b'
@@ -154,7 +155,7 @@ alias fwf='iptables -F;iptables -P INPUT ACCEPT;iptables -P OUTPUT ACCEPT;iptabl
 
 
 # development
-alias countlines='find . -name "*.java" | xargs wc -l'
+alias countlines='\find . -name "*.java" | xargs wc -l'
 alias mvnv='mvn versions:display-dependency-updates'
 alias gem='gem -V'
 
