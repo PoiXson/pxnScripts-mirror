@@ -1,5 +1,5 @@
 Name    : shellscripts
-Version : 1.5.%{!?build_number:x}
+Version : 1.5.%{?build_number}%{!?build_number:x}
 Release : 1
 Summary : A collection of commonly used shell scripts
 Group   : Base System/System Tools
