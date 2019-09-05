@@ -22,6 +22,9 @@
 # aliases.sh
 
 
+export PS1='\u@${HOSTNAME%%.*} [\w]\$ '
+
+
 # cd aliases
 alias ~='cd ~'
 alias ..='cd ..'
