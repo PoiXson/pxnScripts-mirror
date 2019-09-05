@@ -1,11 +1,11 @@
 Name            : shellscripts
 Summary         : A collection of commonly used shell scripts
-Version         : 1.4.3.%{BUILD_NUMBER}
 Release         : 1
 BuildArch       : noarch
 Provides        : pxnscripts
 Requires        : perl, screen, bash, wget, rsync, zip, unzip, grep, tree, dialog, net-tools, dos2unix
 Prefix          : %{_bindir}/shellscripts
+Version : 1.5.%{!?build_number:x}
 %define _rpmfilename  %%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm
 
 Group           : Base System/System Tools
