@@ -31,16 +31,6 @@ A collection of commonly used shell scripts for CentOS and Fedora. (development)
 
 
 
-### Prep ###
-%prep
-
-
-
-### Build ###
-%build
-
-
-
 ### Install ###
 %install
 echo
@@ -59,18 +49,6 @@ echo "Install.."
 	# TODO: remove this file?
 	%{__rm} -fv "%{buildroot}%{prefix}/install-zfs.sh"
 \popd
-
-
-### Check ###
-%check
-
-
-
-### Clean ###
-%clean
-
-
-
 # create symlinks
 %{__ln_s} -f  "%{prefix}/build-rpm.sh"        "%{buildroot}%{_bindir}/build-rpm"
 %{__ln_s} -f  "%{prefix}/chmodr.sh"           "%{buildroot}%{_bindir}/chmodr"
