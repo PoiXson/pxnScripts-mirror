@@ -40,6 +40,16 @@ while [ $# -gt 0 ]; do
 	esac
 	shift
 done
+
+
+
+if [ -z $SPEC_NAME ]; then
+	SPEC_FILES_FOUND=$( \ls -1 *.spec )
+	SPEC_FILES_COUNT=$( echo "$SPEC_FILES_FOUND" | wc -l )
+	if [ $SPEC_FILES_COUNT -eq 1 ]; then
+		SPEC_NAME="$SPEC_FILES_FOUND"
+	fi
+fi
 if [ -z $SPEC_NAME ]; then
 	echo "Provide the spec name to build."
 	exit 1
