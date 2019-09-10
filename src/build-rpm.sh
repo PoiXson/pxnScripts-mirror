@@ -23,12 +23,28 @@
 clear
 
 
-SPEC_NAME="$1"
+
+while [ $# -gt 0 ]; do
+	case $1 in
+	-n|--build-number)
+		shift
+		BUILD_NUMBER="$1"
+	;;
+	*)
+		if [ ! -z $SPEC_NAME ]; then
+			echo "Provide only one spec name to build."
+			exit 1
+		fi
+		SPEC_NAME="$1"
+	;;
+	esac
+	shift
+done
 if [ -z $SPEC_NAME ]; then
 	echo "Provide the spec name to build."
 	exit 1
 fi
-build_number="$2"
+SPEC_NAME="${SPEC_NAME%%.*}"
 
 
 
@@ -51,7 +67,7 @@ echo
 echo 'Building...'
 \pushd "$PWD/rpmbuild/" || exit 1
 	\rpmbuild \
-		${build_number:+ --define="build_number ${build_number}"} \
+		${BUILD_NUMBER:+ --define="build_number ${BUILD_NUMBER}"} \
 		--define="_topdir $PWD" \
 		--define="_tmppath $PWD/TMP" \
 		-bb "SPECS/$SPEC_NAME.spec" \
