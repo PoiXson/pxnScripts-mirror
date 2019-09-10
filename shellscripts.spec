@@ -55,7 +55,8 @@ echo "Install.."
 # copy files
 \pushd "%{_topdir}/../" || exit 1
 	%{__install} -m 0555  src/*.sh  "%{buildroot}%{prefix}/"  || exit 1
-	%{__install} -m 0555  src/iptop.pl  "%{buildroot}%{prefix}/"  || exit 1
+	%{__install} -m 0555  src/*.pl  "%{buildroot}%{prefix}/"  || exit 1
+	# TODO: remove this file?
 	%{__rm} -fv "%{buildroot}%{prefix}/install-zfs.sh"
 \popd
 
@@ -70,61 +71,22 @@ echo "Install.."
 
 
 
-### post install ###
-%post
 # create symlinks
-for SCRIPT_FILE in \
-	build-rpm       \
-	chmodr          \
-	chownr          \
-	forever         \
-	ethtop          \
-	mklinkrel       \
-	monitorhost     \
-	pingssh         \
-	progresspercent \
-	sshkeygen       \
-	timestamp       \
-	yesno           \
-	; do
-		%{__ln_s} -f \
-			"%{prefix}/$SCRIPT_FILE.sh" \
-			"%{_bindir}/$SCRIPT_FILE"
-done
-%{__ln_s} -f \
-	"%{prefix}/iptop.pl" \
-	"%{_bindir}/iptop"
+%{__ln_s} -f  "%{prefix}/build-rpm.sh"        "%{buildroot}%{_bindir}/build-rpm"
+%{__ln_s} -f  "%{prefix}/chmodr.sh"           "%{buildroot}%{_bindir}/chmodr"
+%{__ln_s} -f  "%{prefix}/chownr.sh"           "%{buildroot}%{_bindir}/chownr"
+%{__ln_s} -f  "%{prefix}/ethtop.sh"           "%{buildroot}%{_bindir}/ethtop"
+%{__ln_s} -f  "%{prefix}/forever.sh"          "%{buildroot}%{_bindir}/forever"
+%{__ln_s} -f  "%{prefix}/iptop.pl"            "%{buildroot}%{_bindir}/iptop"
+%{__ln_s} -f  "%{prefix}/mklinkrel.sh"        "%{buildroot}%{_bindir}/mklinkrel"
+%{__ln_s} -f  "%{prefix}/monitorhost.sh"      "%{buildroot}%{_bindir}/monitorhost"
+%{__ln_s} -f  "%{prefix}/pingssh.sh"          "%{buildroot}%{_bindir}/pingssh"
+%{__ln_s} -f  "%{prefix}/progresspercent.sh"  "%{buildroot}%{_bindir}/progresspercent"
+%{__ln_s} -f  "%{prefix}/sshkeygen.sh"        "%{buildroot}%{_bindir}/sshkeygen"
+%{__ln_s} -f  "%{prefix}/timestamp.sh"        "%{buildroot}%{_bindir}/timestamp"
+%{__ln_s} -f  "%{prefix}/yesno.sh"            "%{buildroot}%{_bindir}/yesno"
 # create profile.d symlink
-%{__ln_s} -f \
-	"%{prefix}/profile.sh" \
-	"%{_sysconfdir}/profile.d/shellscripts.sh"
-
-
-
-### post uninstall ###
-%postun
-# remove symlinks
-for SCRIPT_FILE in \
-	build-rpm       \
-	chmodr          \
-	chownr          \
-	forever         \
-	iptop           \
-	ethtop          \
-	mklinkrel       \
-	monitorhost     \
-	pingssh         \
-	progresspercent \
-	sshkeygen       \
-	timestamp       \
-	yesno           \
-	; do
-		[ -h "%{_bindir}/$SCRIPT_FILE" ] \
-			&& %__rm -f  "%{_bindir}/$SCRIPT_FILE"
-done
-# remove profile.d symlink
-[ -h "%{_sysconfdir}/profile.d/shellscripts.sh" ] \
-	&& %__rm -f  "%{_sysconfdir}/profile.d/shellscripts.sh"
+%{__ln_s} -f  "%{prefix}/profile.sh"  "%{buildroot}%{_sysconfdir}/profile.d/shellscripts.sh"
 
 
 
