@@ -93,6 +93,7 @@ echo "Install.."
 ### Files ###
 %files
 %defattr(-,root,root,-)
+%dir %{prefix}/
 %{prefix}/aliases.sh
 %{prefix}/build-rpm.sh
 %{prefix}/chmodr.sh
@@ -109,6 +110,23 @@ echo "Install.."
 %{prefix}/sshkeygen.sh
 %{prefix}/timestamp.sh
 %{prefix}/yesno.sh
+# symlinks
+%{_bindir}/build-rpm
+%{_bindir}/chmodr
+%{_bindir}/chownr
+%{_bindir}/ethtop
+%{_bindir}/forever
+%{_bindir}/iptop
+%{_bindir}/mklinkrel
+%{_bindir}/monitorhost
+%{_bindir}/pingssh
+%{_bindir}/progresspercent
+%{_bindir}/sshkeygen
+%{_bindir}/timestamp
+%{_bindir}/yesno
+%{_sysconfdir}/profile.d/shellscripts.sh
+
+
 
 %files dev
 %defattr(-,root,root,-)
