@@ -4,7 +4,8 @@ Release : 1
 Summary : A collection of commonly used shell scripts
 Group   : Base System/System Tools
 
-Requires  : perl, bash, screen, wget, rsync, zip, unzip, grep, tree, dialog, net-tools, dos2unix
+Requires  : bash, perl, screen, wget, curl, rsync, zip, unzip, grep
+#dialog
 Conflicts : shellscripts-dev
 
 BuildArch : noarch
