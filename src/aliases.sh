@@ -139,6 +139,7 @@ alias psaux='ps auxf'
 alias header='curl -I'
 # alias ports='netstat -tulanp'
 alias ports='\netstat -nape --inet'
+alias wttr='clear;curl wttr.in'
 
 
 # ping/mtr
