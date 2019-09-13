@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 clear
 source /usr/bin/shellscripts/common.sh
 

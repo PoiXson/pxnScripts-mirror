@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 # profile.sh
 
 source /usr/bin/shellscripts/common.sh

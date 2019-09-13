@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 ##===============================================================================
 ## Copyright (c) 2019 PoiXson, Mattsoft
 ## <https://poixson.com> <https://mattsoft.net>

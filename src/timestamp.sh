@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 # Copyright (c) 2007 Heikki Hokkanen <hoxu@users.sf.net>
 # GPL
 set -e

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 ##===============================================================================
 ## Copyright (c) 2013-2019 PoiXson, Mattsoft
 ## <https://poixson.com> <https://mattsoft.net>
@@ -141,7 +141,6 @@ function title() {
 	echo -n " ** "; eval "printf ' '%.0s {1..$_B}"; echo " **"
 	echo -n " "; eval "printf '*'%.0s {1..$_A}"; echo
 	echo -n " "; eval "printf '*'%.0s {1..$_A}"; echo
-	newline
 	newline
 }
 
