@@ -127,6 +127,10 @@ alias du3='\du -h --max-depth=3'
 alias mnt='\mount | column -t'
 
 
+# list paths
+alias paths='echo -e ${PATH//:/\\n}'
+
+
 # screen aliases
 alias screena='screen -x'
 alias screenc='screen -mS'
