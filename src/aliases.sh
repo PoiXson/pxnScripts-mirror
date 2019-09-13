@@ -171,8 +171,8 @@ alias pssh='pingssh'
 
 # iptables aliases
 if [ -e /usr/sbin/iptables ]; then
-	alias fwl='\iptables -L -v'
-	alias fwf='\iptables -F;iptables -P INPUT ACCEPT;iptables -P OUTPUT ACCEPT;iptables -P FORWARD ACCEPT'
+	alias fwl='/usr/sbin/iptables -L -v'
+	alias fwf='/usr/sbin/iptables -F; /usr/sbin/iptables -P INPUT ACCEPT; /usr/sbin/iptables -P OUTPUT ACCEPT; /usr/sbin/iptables -P FORWARD ACCEPT'
 fi
 
 
