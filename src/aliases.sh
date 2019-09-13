@@ -102,12 +102,17 @@ alias dayofyear='\date +"%j"'
 alias W='watch'
 alias wfast='watch -n0.2'
 alias ww='watch w'
-alias memtop='watch -d "free -m;echo;ps aux --sort -rss | head -11"'
 alias vtop='virt-top -d 1'
 alias httpw='watch -d -n1 /usr/bin/lynx -dump -width 500 http://127.0.0.1/whm-server-status'
 alias wdd="watch -n1 killall -v -USR1 dd"
 alias wtime='watch -n0.2 date'
 alias wip='watch "ip addr | grep inet | sort"'
+
+
+# memory
+alias memtop='watch -d "free -m;echo;ps aux --sort -rss | head -11"'
+alias syncmem='\sudo -s -- sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"'
+alias synctop='syncmem & htop'
 
 
 # disk space aliases
@@ -139,8 +144,6 @@ alias kernels='CURRENT_KERNEL=`uname -r` ; rpm -qav | grep kernel-[2-4] | sort -
 alias s='sudo su'
 alias S='sudo su -'
 alias bmdisk='time dd if=/dev/zero of=$PWD/test.file bs=1M count=10000;ll $PWD/test.file;rm $PWD/test.file'
-alias syncmem='\sudo -s -- sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"'
-alias synctop='syncmem & htop'
 alias hist='clear;history | grep $1'
 alias psaux='ps auxf'
 alias header='curl -I'
