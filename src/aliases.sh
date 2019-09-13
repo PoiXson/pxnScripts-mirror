@@ -39,6 +39,7 @@ alias k='killall'
 alias c='clear'
 alias kk='konsole && exit $?'
 #alias kon='konsole -e su &'
+alias killchrome='pkill -c -f "/opt/google/chrome/chrome --type=render"'
 
 
 # file aliases
