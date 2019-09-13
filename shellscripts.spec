@@ -39,14 +39,14 @@ echo "Install.."
 # delete existing rpm's
 %{__rm} -fv "%{_rpmdir}/%{name}-"*.rpm
 # create directories
-%{__install} -d -m 0755 \
+%{__install} -d \
 	"%{buildroot}%{prefix}/"  \
 	"%{buildroot}%{_sysconfdir}/profile.d/"  \
 		|| exit 1
 # copy files
 \pushd "%{_topdir}/../" || exit 1
-	%{__install} -m 0555  src/*.sh  "%{buildroot}%{prefix}/"  || exit 1
-	%{__install} -m 0555  src/*.pl  "%{buildroot}%{prefix}/"  || exit 1
+	%{__install}  src/*.sh  "%{buildroot}%{prefix}/"  || exit 1
+	%{__install}  src/*.pl  "%{buildroot}%{prefix}/"  || exit 1
 	# TODO: remove this file?
 	%{__rm} -fv "%{buildroot}%{prefix}/install-zfs.sh"
 \popd
@@ -71,7 +71,7 @@ echo "Install.."
 
 ### Files ###
 %files
-%defattr(-,root,root,-)
+%defattr(0555, root, root, 0755)
 %dir %{prefix}/
 %{prefix}/aliases.sh
 %{prefix}/build-rpm.sh
