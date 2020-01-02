@@ -80,6 +80,7 @@ echo 'Building...'
 		${BUILD_NUMBER:+ --define="build_number ${BUILD_NUMBER}"} \
 		--define="_topdir $PWD" \
 		--define="_tmppath $PWD/TMP" \
+		--define="_binary_payload w2.xzdio" \
 		-bb "SPECS/$SPEC_NAME.spec" \
 			|| exit 1
 \popd
