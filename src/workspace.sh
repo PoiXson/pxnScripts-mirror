@@ -1,5 +1,4 @@
 #!/bin/bash
-clear
 
 
 #\php check_tab_indent.php || exit 1
@@ -18,11 +17,13 @@ function DisplayHelp() {
 	echo "  --cu, --composer-update        Run 'composer update' on each workspace repository"
 	echo "  --rpm, --build-rpm             Run 'build-rpm' on each workspace repository"
 	echo
+	echo "  -C, --no-clear                 Don't clear the screen before doing work"
 }
 
 
 YES=1
 NO=0
+NO_CLEAR=$NO
 ENABLE_C=$NO
 ENABLE_PP=$NO
 ENABLE_GG=$NO
@@ -59,7 +60,14 @@ while [ $# -gt 0 ]; do
 	--rpm|--build-rpm|--rpm-build)
 		ENABLE_RPM=$YES
 	;;
+	# don't clear screen
+	-C|--no-clear)
+		NO_CLEAR=$YES
+	;;
 	-h|--help)
+		if [ $NO_CLEAR -ne $YES ]; then
+			\clear
+		fi
 		DisplayHelp
 		exit 1
 	;;
@@ -73,6 +81,11 @@ while [ $# -gt 0 ]; do
 	esac
 	shift
 done
+
+
+if [ $NO_CLEAR -ne $YES ]; then
+	\clear
+fi
 
 
 if [[ -z $devs ]]; then
