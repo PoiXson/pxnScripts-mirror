@@ -20,7 +20,6 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ## =============================================================================
 # build-rpm.sh
-#clear
 
 
 function DisplayHelp() {
@@ -29,20 +28,31 @@ function DisplayHelp() {
 	echo
 	echo "Options:"
 	echo "  -n, --build-number             Build number to use with --rpm"
+	echo
 	echo "  -C, --no-clear                 Don't clear the screen before doing work"
 	echo "  -h, --help                     Display this help message"
 	echo
 }
 
 
+YES=1
+NO=0
+NO_CLEAR=$NO
 while [ $# -gt 0 ]; do
 	case $1 in
 	-n|--build-number)
 		shift
 		BUILD_NUMBER="$1"
 	;;
+	# don't clear screen
+	-C|--no-clear)
+		NO_CLEAR=$YES
+	;;
 	# display help
 	-h|--help)
+		if [ $NO_CLEAR -ne $YES ]; then
+			\clear
+		fi
 		DisplayHelp
 		exit 1
 	;;
@@ -57,6 +67,10 @@ while [ $# -gt 0 ]; do
 	shift
 done
 
+
+if [ $NO_CLEAR -ne $YES ]; then
+	\clear
+fi
 
 
 if [ -z $SPEC_NAME ]; then
