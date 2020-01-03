@@ -1,0 +1,99 @@
+shellscripts - Collection of commonly used shell scripts
+
+
+2020-01-03 shellscripts 1.5.4
+=============================
+* added new workspace.sh script
+* added --no-clear flag to workspace.sh and build-rpm.sh scripts
+* added mnt paths and j aliases
+* fixed path to iptables in aliases.sh script
+* fixed build-rpm.sh script to use xz compression (not zstd, unsupported on centos 7)
+* added DisplayHelp() function to build-rpm.sh script
+
+
+2019-09-13 shellscripts 1.5.3
+=============================
+* added killchrome wttr and wip aliases
+* added more cd ../.. aliases
+* added path_..() functions to common.sh script
+* changed script permissions to 0555
+* fixed calls to yesno script in stop and reboot aliases
+
+
+2015-09-10 shellscripts 1.5.2
+=============================
+* added --build-number flag to build-rpm.sh script
+* auto detect spec file by build-rpm.sh script
+
+
+2015-09-05 shellscripts 1.5.1
+=============================
+* added custom PS1 to aliases.sh script
+* improved chmodr and chownr scripts
+* fix to only load aliases for installed tools
+
+
+2015-09-05 shellscripts 1.5.0
+=============================
+* added new build-rpm.sh and ethtop.sh scripts
+* added chmodr.sh and chownr.sh scripts
+* added forever.sh and timestamp.sh scripts
+* added progresspercent.sh and iptop.pl scripts
+* added install-zfs.sh script
+* reorganized aliases.sh script
+* added aliases for scp iptables gradle iscsi pssh ping mtr kernels synctop zfree zfrag s S wll and Wll
+* added displaying hostname and ip address to stop alias
+* improvements to stop and reboot aliases
+* added --partial and --delete-excluded flags to rsync_backup() function in common.sh
+* added valid_ip() and is_locked() functions to common.sh script
+* changed chmod chown and chgrp aliases to use -c flag rather than -v
+* changed title() function to properly handle multiple lines
+* 
+* 
+* improved yesno.sh script
+* fixed validating --timeout as number or -1 for no timeout
+* 
+
+
+2015-07-07 shellscripts 1.4.3
+=============================
+* added pushd and popd aliases to prepend echo cd> and cd<
+
+
+2015-07-03 shellscripts 1.4.2
+=============================
+* copy files to stable repo rather than symlink
+
+
+2015-07-03 shellscripts 1.4.1
+=============================
+* added pingssh.sh and monitorhost.sh scripts
+* added repo_update.sh and repo_promote.sh scripts
+* added reboot alias using yesno.sh script
+* added yumup and yumupy aliases
+* added mvnv alias to check for dependency updates
+* added aliases for ccat z ~ lx lk du1 gem hist psaux untar sux kon and gge
+* combined df -h and df -i with wdf alias
+* renamed wf alias to wfast
+* added -d flag to a few watch aliases to highlight changes
+* changed gg and kk aliases to only exit on success
+* changed sshkeygen.sh script to use ssh-copy-id rather than scp to install keys
+* fixed mklinkrel.sh script to support symlinks to files as well as directories
+* added support to build_utils.sh script for -FINAL and missing -SNAPSHOT
+* added rsync_backup() latest_version() and get_lock() functions to common.sh script
+* added COLOR_ variables to common.sh script
+* changed install path from /usr/local/bin/pxn to /usr/bin/shellscripts
+* other bug fixes
+
+
+2014-10-08 shellscripts 1.3.0
+=============================
+* added --build-number flag to build-rpm.sh script
+* delete output rpm's before building new rpm's
+* renamed mkln.sh script to mklinkrel.sh
+* few other bug fixes
+
+
+2014-10-05 shellscripts 1.0.4
+=============================
+* Initial release
