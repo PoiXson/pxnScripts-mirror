@@ -6,7 +6,7 @@ Group   : Base System/System Tools
 
 Requires  : bash, perl, screen, wget, curl, rsync, zip, unzip, grep
 #dialog
-Requires  : devscripts, aliasscripts, pingssh
+Requires  : pxn-dev-scripts, pxn-alias-scripts, pingssh
 Conflicts : shellscripts-dev
 
 BuildArch : noarch
@@ -19,11 +19,11 @@ Prefix: %{_bindir}/shellscripts
 
 
 
-%package -n devscripts
+%package -n pxn-dev-scripts
 Summary  : A collection of commonly used shell scripts (for development)
 Requires : shellscripts
 
-%package -n aliasscripts
+%package -n pxn-alias-scripts
 Summary  : A collection of shell command aliases.
 
 %package -n pingssh
@@ -34,10 +34,10 @@ Summary  : Pings a remote host until it's able to connect with ssh.
 %description
 A collection of commonly used shell scripts for CentOS and Fedora.
 
-%description -n devscripts
+%description -n pxn-dev-scripts
 A collection of commonly used shell scripts for CentOS and Fedora. (for development)
 
-%description -n aliasscripts
+%description -n pxn-alias-scripts
 A collection of shell command aliases.
 
 %description -n pingssh
@@ -114,14 +114,14 @@ echo "Install.."
 
 
 
-%files -n devscripts
+%files -n pxn-dev-scripts
 %defattr(-,root,root,-)
 %{prefix}/build-rpm.sh
 %{prefix}/workspace.sh
 %{_bindir}/build-rpm
 %{_bindir}/workspace
 
-%files -n aliasscripts
+%files -n pxn-alias-scripts
 %defattr(-,root,root,-)
 %{prefix}/aliases.sh
 %{prefix}/profile.sh
