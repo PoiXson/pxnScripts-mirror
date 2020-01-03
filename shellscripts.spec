@@ -104,7 +104,7 @@ echo "Install.."
 %{_bindir}/progresspercent
 %{_bindir}/sshkeygen
 %{_bindir}/timestamp
-%{_bindir}/workspace.sh
+%{_bindir}/workspace
 %{_bindir}/yesno
 %{_sysconfdir}/profile.d/shellscripts.sh
 
