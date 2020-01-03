@@ -45,6 +45,9 @@ while [ $# -gt 0 ]; do
 		\shift
 		BUILD_NUMBER="$1"
 	;;
+	--build-number=*)
+		BUILD_NUMBER="${1#*=}"
+	;;
 	# don't clear screen
 	-C|--no-clear)
 		NO_CLEAR=$YES
