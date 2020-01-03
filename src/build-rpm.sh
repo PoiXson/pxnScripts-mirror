@@ -39,9 +39,10 @@ YES=1
 NO=0
 NO_CLEAR=$NO
 while [ $# -gt 0 ]; do
-	case $1 in
+	case "$1" in
+	# build number
 	-n|--build-number)
-		shift
+		\shift
 		BUILD_NUMBER="$1"
 	;;
 	# don't clear screen
@@ -64,7 +65,7 @@ while [ $# -gt 0 ]; do
 		SPEC_NAME="$1"
 	;;
 	esac
-	shift
+	\shift
 done
 
 
@@ -90,7 +91,6 @@ fi
 SPEC_NAME="${SPEC_NAME%%.*}"
 
 
-
 # prepare build space
 PWD=$(pwd)
 if [ -d "$PWD/rpmbuild/" ]; then
@@ -101,14 +101,12 @@ fi
 #rpmdev-setuptree  || exit 1
 
 
-
 \cp -fv  "$SPEC_NAME.spec"  "$PWD/rpmbuild/SPECS/"  || exit 1
 echo
 
 
-
 echo 'Building...'
-\pushd "$PWD/rpmbuild/" || exit 1
+\pushd "$PWD/rpmbuild/"  || exit 1
 	\rpmbuild \
 		${BUILD_NUMBER:+ --define="build_number ${BUILD_NUMBER}"} \
 		--define="_topdir $PWD" \
@@ -119,9 +117,8 @@ echo 'Building...'
 \popd
 
 
-
 echo;echo
 echo "Success!"
-\ls -lAsh "$PWD/rpmbuild/RPMS/" || exit 1
+\ls -lAsh "$PWD/rpmbuild/RPMS/"  || exit 1
 echo;echo
 exit 0
