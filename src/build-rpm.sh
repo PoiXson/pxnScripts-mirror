@@ -20,7 +20,7 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ## =============================================================================
 # build-rpm.sh
-clear
+#clear
 
 
 
@@ -91,3 +91,4 @@ echo;echo
 echo "Success!"
 \ls -lAsh "$PWD/rpmbuild/RPMS/" || exit 1
 echo;echo
+exit 0
