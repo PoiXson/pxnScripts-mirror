@@ -6,6 +6,7 @@ Group   : Base System/System Tools
 
 Requires  : bash, perl, screen, wget, curl, rsync, zip, unzip, grep
 #dialog
+Requires  : devscripts, aliasscripts, pingssh
 Conflicts : shellscripts-dev
 
 BuildArch : noarch
@@ -18,17 +19,29 @@ Prefix: %{_bindir}/shellscripts
 
 
 
-%package dev
-Summary : A collection of commonly used shell scripts (development)
-Conflicts: shellscripts
+%package -n devscripts
+Summary  : A collection of commonly used shell scripts (for development)
+Requires : shellscripts
+
+%package -n aliasscripts
+Summary  : A collection of shell command aliases.
+
+%package -n pingssh
+Summary  : Pings a remote host until it's able to connect with ssh.
 
 
 
 %description
 A collection of commonly used shell scripts for CentOS and Fedora.
 
-%description dev
-A collection of commonly used shell scripts for CentOS and Fedora. (development)
+%description -n devscripts
+A collection of commonly used shell scripts for CentOS and Fedora. (for development)
+
+%description -n aliasscripts
+A collection of shell command aliases.
+
+%description -n pingssh
+Pings a remote host until it's able to connect with ssh.
 
 
 
@@ -74,8 +87,6 @@ echo "Install.."
 %files
 %defattr(0555, root, root, 0755)
 %dir %{prefix}/
-%{prefix}/aliases.sh
-%{prefix}/build-rpm.sh
 %{prefix}/chmodr.sh
 %{prefix}/chownr.sh
 %{prefix}/common.sh
@@ -84,15 +95,11 @@ echo "Install.."
 %{prefix}/iptop.pl
 %{prefix}/mklinkrel.sh
 %{prefix}/monitorhost.sh
-%{prefix}/pingssh.sh
-%{prefix}/profile.sh
 %{prefix}/progresspercent.sh
 %{prefix}/sshkeygen.sh
 %{prefix}/timestamp.sh
-%{prefix}/workspace.sh
 %{prefix}/yesno.sh
 # symlinks
-%{_bindir}/build-rpm
 %{_bindir}/chmodr
 %{_bindir}/chownr
 %{_bindir}/ethtop
@@ -100,15 +107,27 @@ echo "Install.."
 %{_bindir}/iptop
 %{_bindir}/mklinkrel
 %{_bindir}/monitorhost
-%{_bindir}/pingssh
 %{_bindir}/progresspercent
 %{_bindir}/sshkeygen
 %{_bindir}/timestamp
-%{_bindir}/workspace
 %{_bindir}/yesno
+
+
+
+%files -n devscripts
+%defattr(-,root,root,-)
+%{prefix}/build-rpm.sh
+%{prefix}/workspace.sh
+%{_bindir}/build-rpm
+%{_bindir}/workspace
+
+%files -n aliasscripts
+%defattr(-,root,root,-)
+%{prefix}/aliases.sh
+%{prefix}/profile.sh
 %{_sysconfdir}/profile.d/shellscripts.sh
 
-
-
-%files dev
+%files -n pingssh
 %defattr(-,root,root,-)
+%{prefix}/pingssh.sh
+%{_bindir}/pingssh
