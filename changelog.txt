@@ -1,6 +1,11 @@
 shellscripts - Collection of commonly used shell scripts
 
 
+2020-01-03 shellscripts 1.5.5
+=============================
+* split into devscripts.rpm aliasscripts.rpm and pingssh.rpm packages
+
+
 2020-01-03 shellscripts 1.5.4
 =============================
 * added new workspace.sh script
