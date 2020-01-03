@@ -1,9 +1,9 @@
 shellscripts - Collection of commonly used shell scripts
 
 
-2020-01-03 shellscripts 1.5.5
+2020-01-03 shellscripts 1.5.6
 =============================
-* split into devscripts.rpm aliasscripts.rpm and pingssh.rpm packages
+* split into pxn-dev-scripts.rpm pxn-alias-scripts.rpm and pingssh.rpm packages
 
 
 2020-01-03 shellscripts 1.5.4
