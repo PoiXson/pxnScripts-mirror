@@ -23,12 +23,28 @@
 #clear
 
 
+function DisplayHelp() {
+	echo "Usage:"
+	echo "  build-rpm [options] <spec-file>"
+	echo
+	echo "Options:"
+	echo "  -n, --build-number             Build number to use with --rpm"
+	echo "  -C, --no-clear                 Don't clear the screen before doing work"
+	echo "  -h, --help                     Display this help message"
+	echo
+}
+
 
 while [ $# -gt 0 ]; do
 	case $1 in
 	-n|--build-number)
 		shift
 		BUILD_NUMBER="$1"
+	;;
+	# display help
+	-h|--help)
+		DisplayHelp
+		exit 1
 	;;
 	*)
 		if [ ! -z $SPEC_NAME ]; then
@@ -51,7 +67,10 @@ if [ -z $SPEC_NAME ]; then
 	fi
 fi
 if [ -z $SPEC_NAME ]; then
+	echo
 	echo "Provide the spec name to build."
+	echo
+	DisplayHelp
 	exit 1
 fi
 SPEC_NAME="${SPEC_NAME%%.*}"
