@@ -1,4 +1,25 @@
-#!/bin/bash
+#!/usr/bin/bash
+##===============================================================================
+## Copyright (c) 2020 PoiXson, Mattsoft
+## <https://poixson.com> <https://mattsoft.net>
+## Released under the GPL 3.0
+##
+## Description: Script to manage a workspace of projects
+##
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+##
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+## =============================================================================
+# workspace.sh
 
 
 #\php check_tab_indent.php || exit 1
@@ -10,6 +31,7 @@ function DisplayHelp() {
 	echo
 	echo "Options:"
 	echo "  -a, --all                      Use all .dev files found"
+	echo
 	echo "  -c, --cleanup                  Cleanup workspace; delete generated files"
 	echo "  -p, --pp, --pull-push          Run 'git pull' and 'git push'"
 	echo "  -g, --gg, --git-gui            Open git-gui for each workspace repository"
@@ -18,6 +40,8 @@ function DisplayHelp() {
 	echo "  --rpm, --build-rpm             Run 'build-rpm' on each workspace repository"
 	echo
 	echo "  -C, --no-clear                 Don't clear the screen before doing work"
+	echo "  -h, --help                     Display this help message"
+	echo
 }
 
 
@@ -34,7 +58,7 @@ while [ $# -gt 0 ]; do
 	case "$1" in
 	# all workspaces
 	-a|--all)
-		devs=($( ls -1v *.dev ))
+		devs=($( \ls -1v *.dev ))
 	;;
 	# cleanup
 	-c|--clean|--cleanup)
@@ -64,6 +88,7 @@ while [ $# -gt 0 ]; do
 	-C|--no-clear)
 		NO_CLEAR=$YES
 	;;
+	# display help
 	-h|--help)
 		if [ $NO_CLEAR -ne $YES ]; then
 			\clear
@@ -79,7 +104,7 @@ while [ $# -gt 0 ]; do
 		devs=( "${devs[@]}" "$1" )
 	;;
 	esac
-	shift
+	\shift
 done
 
 
@@ -114,7 +139,7 @@ fi
 
 # .gitconfig file
 if [ -f "./.gitconfig" ]; then
-	\cp -fv "./.gitconfig" ~/ || exit 1
+	\cp -fv "./.gitconfig" ~/  || exit 1
 fi
 
 
@@ -153,24 +178,24 @@ function doWorkspace() {
 	# cleanup
 	if [ $ENABLE_C -eq $YES ]; then
 		if [ -d "$WS_NAME/" ]; then
-			pushd "$WS_NAME/" || exit 1
+			\pushd "$WS_NAME/"  || exit 1
 				if [ -d "vendor/" ]; then
-					rm -Rvf --preserve-root "vendor"    || exit 1
-					sleep 0.2
+					\rm -Rvf --preserve-root "vendor"    || exit 1
+					\sleep 0.2
 					echo
 				fi
 				if [ -d "rpmbuild/" ]; then
-					rm -Rvf --preserve-root "rpmbuild"  || exit 1
-					sleep 0.2
+					\rm -Rvf --preserve-root "rpmbuild"  || exit 1
+					\sleep 0.2
 					echo
 				fi
 				if [ -d "coverage/" ]; then
-					rm -Rvf --preserve-root "coverage"  || exit 1
-					sleep 0.2
+					\rm -Rvf --preserve-root "coverage"  || exit 1
+					\sleep 0.2
 					echo
 				fi
-			popd
-			sleep 0.2
+			\popd
+			\sleep 0.2
 		else
 			echo " > bypass - workspace not found"
 		fi
@@ -178,19 +203,19 @@ function doWorkspace() {
 	# git pull/push
 	if [ $ENABLE_PP -eq $YES ]; then
 		if [ -d "$WS_NAME" ]; then
-			pushd "$WS_NAME/" || exit 1
+			\pushd "$WS_NAME/"  || exit 1
 				echo
 				echo " > Pulling repo.."
-				git pull || exit 1
+				\git pull  || exit 1
 				echo
 				echo " > Pushing repo.."
-				git push || exit 1
+				\git push  || exit 1
 				echo
-			popd
+			\popd
 		elif [ ! -z $WS_VCS ]; then
 			echo
 			echo " > Cloning repo.."
-			git clone "$WS_VCS" "$WS_NAME" || exit 1
+			\git clone "$WS_VCS" "$WS_NAME"  || exit 1
 			echo
 		else
 			echo " > bypass - git not found"
@@ -198,14 +223,14 @@ function doWorkspace() {
 	fi
 	# update static files
 	if [[ -f "./.gitignore" ]]; then
-		cp "./.gitignore" "$WS_NAME/" || exit 1
+		\cp "./.gitignore" "$WS_NAME/"  || exit 1
 		if [ -f "./.gitattributes" ]; then
-			cp "./.gitattributes" "$WS_NAME/" || exit 1
+			\cp "./.gitattributes" "$WS_NAME/"  || exit 1
 		fi
 	fi
 	if [ -f "./phpunit.xml" ]; then
 		if [ -f "$WS_NAME/phpunit.xml" ]; then
-			cp "./phpunit.xml" "$WS_NAME/" || exit 1
+			\cp "./phpunit.xml" "$WS_NAME/"  || exit 1
 		fi
 	fi
 	# composer
@@ -213,19 +238,19 @@ function doWorkspace() {
 		if [ -f "$WS_NAME/composer.json" ]; then
 			# composer install
 			if [ $ENABLE_CI -eq $YES ]; then
-				pushd "$WS_NAME/" || exit 1
+				\pushd "$WS_NAME/"  || exit 1
 					echo
-					composer install || exit 1
+					\composer install  || exit 1
 					echo
-				popd
+				\popd
 			fi
 			# composer update
 			if [ $ENABLE_CU -eq $YES ]; then
-				pushd "$WS_NAME/" || exit 1
+				\pushd "$WS_NAME/"  || exit 1
 					echo
-					composer update || exit 1
+					\composer update  || exit 1
 					echo
-				popd
+				\popd
 			fi
 		else
 			echo " > bypass - composer not found"
@@ -234,15 +259,15 @@ function doWorkspace() {
 	# build-rpm
 	if [ $ENABLE_RPM -eq $YES ];then
 		if [ -f "$WS_NAME/"*.spec ]; then
-			pushd "$WS_NAME/" || exit 1
+			\pushd "$WS_NAME/"  || exit 1
 				echo
-				build-rpm || exit 1
+				\build-rpm  || exit 1
 				echo
-			popd
+			\popd
 			if [ ! -d rpms/ ]; then
-				mkdir -pv rpms/ || exit 1
+				\mkdir -pv rpms/  || exit 1
 			fi
-			cp "$WS_NAME/rpmbuild/RPMS/"*.rpm rpms/ || exit 1
+			\cp "$WS_NAME/rpmbuild/RPMS/"*.rpm rpms/  || exit 1
 		else
 			echo " > bypass - .spec not found"
 		fi
@@ -250,10 +275,10 @@ function doWorkspace() {
 	# git-gui
 	if [ $ENABLE_GG -eq $YES ]; then
 		if [ -d "$WS_NAME/.git/" ]; then
-			pushd "$WS_NAME" || exit 1
+			\pushd "$WS_NAME"  || exit 1
 				/usr/libexec/git-core/git-gui &
-				sleep 0.2
-			popd
+				\sleep 0.2
+			\popd
 		fi
 	fi
 	# cleanup vars
@@ -263,7 +288,7 @@ function WorkspaceCleanup() {
 	# reset workspace vars
 	WS_NAME=""
 	WS_VCS=""
-	sleep 0.4
+	\sleep 0.4
 	echo
 }
 
@@ -275,7 +300,7 @@ function devSource() {
 		echo "File not found: $dev"
 		exit 1
 	fi
-	source "./$dev" || exit 1
+	source "./$dev"  || exit 1
 	Workspace
 }
 for dev in ${devs[@]}; do
@@ -293,6 +318,7 @@ for dev in ${devs[@]}; do
 done
 
 
-echo
-echo -e "\nFinished!\n"
+echo;echo
+echo "Finished!"
+echo;echo
 exit 0
