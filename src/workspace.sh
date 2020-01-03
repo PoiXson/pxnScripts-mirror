@@ -261,7 +261,7 @@ function doWorkspace() {
 		if [ -f "$WS_NAME/"*.spec ]; then
 			\pushd "$WS_NAME/"  || exit 1
 				echo
-				\build-rpm  || exit 1
+				\build-rpm --no-clear  || exit 1
 				echo
 			\popd
 			if [ ! -d rpms/ ]; then
