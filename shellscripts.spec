@@ -63,6 +63,7 @@ echo "Install.."
 %{__ln_s} -f  "%{prefix}/progresspercent.sh"  "%{buildroot}%{_bindir}/progresspercent"
 %{__ln_s} -f  "%{prefix}/sshkeygen.sh"        "%{buildroot}%{_bindir}/sshkeygen"
 %{__ln_s} -f  "%{prefix}/timestamp.sh"        "%{buildroot}%{_bindir}/timestamp"
+%{__ln_s} -f  "%{prefix}/workspace.sh"        "%{buildroot}%{_bindir}/workspace"
 %{__ln_s} -f  "%{prefix}/yesno.sh"            "%{buildroot}%{_bindir}/yesno"
 # create profile.d symlink
 %{__ln_s} -f  "%{prefix}/profile.sh"  "%{buildroot}%{_sysconfdir}/profile.d/shellscripts.sh"
@@ -88,6 +89,7 @@ echo "Install.."
 %{prefix}/progresspercent.sh
 %{prefix}/sshkeygen.sh
 %{prefix}/timestamp.sh
+%{prefix}/workspace.sh
 %{prefix}/yesno.sh
 # symlinks
 %{_bindir}/build-rpm
@@ -102,6 +104,7 @@ echo "Install.."
 %{_bindir}/progresspercent
 %{_bindir}/sshkeygen
 %{_bindir}/timestamp
+%{_bindir}/workspace.sh
 %{_bindir}/yesno
 %{_sysconfdir}/profile.d/shellscripts.sh
 
