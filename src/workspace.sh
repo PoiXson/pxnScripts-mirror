@@ -222,15 +222,17 @@ function doWorkspace() {
 		fi
 	fi
 	# update static files
-	if [[ -f "./.gitignore" ]]; then
-		\cp "./.gitignore" "$WS_NAME/"  || exit 1
-		if [ -f "./.gitattributes" ]; then
-			\cp "./.gitattributes" "$WS_NAME/"  || exit 1
+	if [ -d "$WS_NAME/" ]; then
+		if [[ -f "./.gitignore" ]]; then
+			\cp "./.gitignore" "$WS_NAME/"  || exit 1
+			if [ -f "./.gitattributes" ]; then
+				\cp "./.gitattributes" "$WS_NAME/"  || exit 1
+			fi
 		fi
-	fi
-	if [ -f "./phpunit.xml" ]; then
-		if [ -f "$WS_NAME/phpunit.xml" ]; then
-			\cp "./phpunit.xml" "$WS_NAME/"  || exit 1
+		if [ -f "./phpunit.xml" ]; then
+			if [ -f "$WS_NAME/phpunit.xml" ]; then
+				\cp "./phpunit.xml" "$WS_NAME/"  || exit 1
+			fi
 		fi
 	fi
 	# composer
