@@ -1,13 +1,13 @@
 shellscripts - Collection of commonly used shell scripts
 
 
-2020-01-03 shellscripts 1.5.6
-=============================
+2020-01-03 - 1.5.6
+==================
 * split into pxn-dev-scripts.rpm pxn-alias-scripts.rpm and pingssh.rpm packages
 
 
-2020-01-03 shellscripts 1.5.4
-=============================
+2020-01-03 - 1.5.4
+==================
 * added new workspace.sh script
 * added --no-clear flag to workspace.sh and build-rpm.sh scripts
 * added mnt paths and j aliases
@@ -16,8 +16,8 @@ shellscripts - Collection of commonly used shell scripts
 * added DisplayHelp() function to build-rpm.sh script
 
 
-2019-09-13 shellscripts 1.5.3
-=============================
+2019-09-13 - 1.5.3
+==================
 * added killchrome wttr and wip aliases
 * added more cd ../.. aliases
 * added path_..() functions to common.sh script
@@ -25,21 +25,21 @@ shellscripts - Collection of commonly used shell scripts
 * fixed calls to yesno script in stop and reboot aliases
 
 
-2015-09-10 shellscripts 1.5.2
-=============================
+2015-09-10 - 1.5.2
+==================
 * added --build-number flag to build-rpm.sh script
 * auto detect spec file by build-rpm.sh script
 
 
-2015-09-05 shellscripts 1.5.1
-=============================
+2015-09-05 - 1.5.1
+==================
 * added custom PS1 to aliases.sh script
 * improved chmodr and chownr scripts
 * fix to only load aliases for installed tools
 
 
-2015-09-05 shellscripts 1.5.0
-=============================
+2015-09-05 - 1.5.0
+==================
 * added new build-rpm.sh and ethtop.sh scripts
 * added chmodr.sh and chownr.sh scripts
 * added forever.sh and timestamp.sh scripts
@@ -53,25 +53,22 @@ shellscripts - Collection of commonly used shell scripts
 * added valid_ip() and is_locked() functions to common.sh script
 * changed chmod chown and chgrp aliases to use -c flag rather than -v
 * changed title() function to properly handle multiple lines
-* 
-* 
 * improved yesno.sh script
 * fixed validating --timeout as number or -1 for no timeout
-* 
 
 
-2015-07-07 shellscripts 1.4.3
-=============================
+2015-07-07 - 1.4.3
+==================
 * added pushd and popd aliases to prepend echo cd> and cd<
 
 
-2015-07-03 shellscripts 1.4.2
-=============================
+2015-07-03 - 1.4.2
+==================
 * copy files to stable repo rather than symlink
 
 
-2015-07-03 shellscripts 1.4.1
-=============================
+2015-07-03 - 1.4.1
+==================
 * added pingssh.sh and monitorhost.sh scripts
 * added repo_update.sh and repo_promote.sh scripts
 * added reboot alias using yesno.sh script
@@ -91,14 +88,14 @@ shellscripts - Collection of commonly used shell scripts
 * other bug fixes
 
 
-2014-10-08 shellscripts 1.3.0
-=============================
+2014-10-08 - 1.3.0
+==================
 * added --build-number flag to build-rpm.sh script
 * delete output rpm's before building new rpm's
 * renamed mkln.sh script to mklinkrel.sh
 * few other bug fixes
 
 
-2014-10-05 shellscripts 1.0.4
-=============================
+2014-10-05 - 1.0.4
+==================
 * Initial release
