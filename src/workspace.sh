@@ -218,7 +218,7 @@ function doWorkspace() {
 			\git clone "$WS_VCS" "$WS_NAME"  || exit 1
 			echo
 		else
-			echo " > bypass - git not found"
+			echo " > bypass - .git not found"
 		fi
 	fi
 	# update static files
@@ -255,7 +255,7 @@ function doWorkspace() {
 				\popd
 			fi
 		else
-			echo " > bypass - composer not found"
+			echo " > bypass - composer.json not found"
 		fi
 	fi
 	# build-rpm
@@ -271,7 +271,7 @@ function doWorkspace() {
 			fi
 			\cp "$WS_NAME/rpmbuild/RPMS/"*.rpm rpms/  || exit 1
 		else
-			echo " > bypass - .spec not found"
+			echo " > bypass - x.spec not found"
 		fi
 	fi
 	# git-gui
