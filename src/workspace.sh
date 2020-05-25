@@ -36,6 +36,9 @@ function DisplayHelp() {
 	echo "  -p, --pp, --pull-push          Run 'git pull' and 'git push'"
 	echo "  -g, --gg, --git-gui            Open git-gui for each workspace"
 	echo
+	echo "  --mcp, --mvn-clean-package     Run 'mvn clean package' on each workspace"
+	echo "  --mci, --mvn-clean-install     Run 'mvn clean install' on each workspace"
+	echo
 	echo "  --ci, --composer-install       Run 'composer install' on each workspace"
 	echo "  --cu, --composer-update        Run 'composer update' on each workspace"
 	echo
@@ -53,6 +56,8 @@ NO_CLEAR=$NO
 ENABLE_C=$NO
 ENABLE_PP=$NO
 ENABLE_GG=$NO
+ENABLE_MCP=$NO
+ENABLE_MCI=$NO
 ENABLE_CI=$NO
 ENABLE_CU=$NO
 ENABLE_RPM=$NO
@@ -73,6 +78,14 @@ while [ $# -gt 0 ]; do
 	# git-gui
 	-g|--gg|--git-gui)
 		ENABLE_GG=$YES
+	;;
+	# mvn clean package
+	--mcp|--mvn-clean-package)
+		ENABLE_MCP=$YES
+	;;
+	# mvn clean install
+	--mci|--mvn-clean-install)
+		ENABLE_MCI=$YES
 	;;
 	# composer install
 	--ci|--composer-install)
@@ -128,6 +141,8 @@ fi
 if	[[ $ENABLE_C   -ne $YES ]] && \
 	[[ $ENABLE_PP  -ne $YES ]] && \
 	[[ $ENABLE_GG  -ne $YES ]] && \
+	[[ $ENABLE_MCP -ne $YES ]] && \
+	[[ $ENABLE_MCI -ne $YES ]] && \
 	[[ $ENABLE_CI  -ne $YES ]] && \
 	[[ $ENABLE_CU  -ne $YES ]] && \
 	[[ $ENABLE_RPM -ne $YES ]]; then
@@ -183,6 +198,11 @@ function doWorkspace() {
 	if [ $ENABLE_C -eq $YES ]; then
 		if [ -d "$WS_NAME/" ]; then
 			\pushd "$WS_NAME/"  || exit 1
+				if [ -d "target/" ]; then
+					\rm -Rvf --preserve-root "target"    || exit 1
+					\sleep 0.2
+					echo
+				fi
 				if [ -d "vendor/" ]; then
 					\rm -Rvf --preserve-root "vendor"    || exit 1
 					\sleep 0.2
@@ -237,6 +257,29 @@ function doWorkspace() {
 			if [ -f "$WS_NAME/phpunit.xml" ]; then
 				\cp "./phpunit.xml" "$WS_NAME/"  || exit 1
 			fi
+		fi
+	fi
+	# maven
+	if [[ $ENABLE_MCP -eq $YES ]] || [[ $ENABLE_MCI -eq $YES ]]; then
+		if [ -f "$WS_NAME/pom.xml" ];then
+			# mvn clean package
+			if [ $ENABLE_MCP -eq $YES ]; then
+				\pushd "$WS_NAME/" || exit 1
+				echo
+				\mvn clean package || exit 1
+				echo
+				\popd
+			fi
+			# mvn clean install
+			if [ $ENABLE_MCI -eq $YES ]; then
+				\pushd "$WS_NAME/" || exit 1
+				echo
+				\mvn clean install || exit 1
+				echo
+				\popd
+			fi
+		else
+			echo " > bypass - pom.xml not found"
 		fi
 	fi
 	# composer
