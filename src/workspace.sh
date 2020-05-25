@@ -34,10 +34,12 @@ function DisplayHelp() {
 	echo
 	echo "  -c, --cleanup                  Cleanup workspace; delete generated files"
 	echo "  -p, --pp, --pull-push          Run 'git pull' and 'git push'"
-	echo "  -g, --gg, --git-gui            Open git-gui for each workspace repository"
-	echo "  --ci, --composer-install       Run 'composer install' on each workspace repository"
-	echo "  --cu, --composer-update        Run 'composer update' on each workspace repository"
-	echo "  --rpm, --build-rpm             Run 'build-rpm' on each workspace repository"
+	echo "  -g, --gg, --git-gui            Open git-gui for each workspace"
+	echo
+	echo "  --ci, --composer-install       Run 'composer install' on each workspace"
+	echo "  --cu, --composer-update        Run 'composer update' on each workspace"
+	echo
+	echo "  --rpm, --build-rpm             Run 'build-rpm' on each workspace"
 	echo
 	echo "  -C, --no-clear                 Don't clear the screen before doing work"
 	echo "  -h, --help                     Display this help message"
@@ -163,11 +165,13 @@ function title() {
 
 
 function Workspace() {
+	if [ -z $WS_NAME ]; then
+		if [ ! -z $1 ]; then
+			WS_NAME="$1"
+		fi
+	fi
 	if [ ! -z $WS_NAME ]; then
 		doWorkspace
-	fi
-	if [ ! -z $1 ]; then
-		WS_NAME="$1"
 	fi
 }
 function doWorkspace() {
@@ -284,9 +288,9 @@ function doWorkspace() {
 		fi
 	fi
 	# cleanup vars
-	WorkspaceCleanup
+	doWorkspaceCleanup
 }
-function WorkspaceCleanup() {
+function doWorkspaceCleanup() {
 	# reset workspace vars
 	WS_NAME=""
 	WS_VCS=""
@@ -296,7 +300,7 @@ function WorkspaceCleanup() {
 
 
 function devSource() {
-	WorkspaceCleanup
+	doWorkspaceCleanup
 	dev="$1"
 	if [[ ! -f "$dev" ]]; then
 		echo "File not found: $dev"
