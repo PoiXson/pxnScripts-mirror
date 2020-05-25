@@ -180,13 +180,11 @@ function title() {
 
 
 function Workspace() {
-	if [ -z $WS_NAME ]; then
-		if [ ! -z $1 ]; then
-			WS_NAME="$1"
-		fi
-	fi
 	if [ ! -z $WS_NAME ]; then
 		doWorkspace
+	fi
+	if [ ! -z $1 ]; then
+		WS_NAME="$1"
 	fi
 }
 function doWorkspace() {
