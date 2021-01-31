@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 ##===============================================================================
-## Copyright (c) 2013-2019 PoiXson, Mattsoft
+## Copyright (c) 2013-2021 PoiXson, Mattsoft
 ## <https://poixson.com> <https://mattsoft.net>
 ## Released under the GPL 3.0
 ##
@@ -41,11 +41,7 @@ alias .6='cd ../../../../../..'
 # exit/kill aliases
 alias e='exit'
 alias killall='\killall -v'
-alias k='killall'
 alias c='clear'
-alias kk='konsole && exit $?'
-#alias kon='konsole -e su &'
-alias killchrome='pkill -c -f "/opt/google/chrome/chrome --type=render"'
 
 
 # file aliases
@@ -55,6 +51,7 @@ alias mv='\mv -v -i'
 alias cwd='pwd'
 alias ccat='clear;cat'
 alias untar='\tar -zxvf'
+# compression enabled
 alias scp='scp -C'
 
 
@@ -62,7 +59,6 @@ alias scp='scp -C'
 alias ls='\ls -A --color=auto'
 alias ll='ls -lhs'
 
-alias ls.='ls -d .*'
 alias ll.='ll -d .*'
 alias ld='ll -d */'
 alias l.='ll.'
@@ -100,9 +96,8 @@ alias dayofyear='\date +"%j"'
 
 # watch aliases
 alias W='watch'
-alias wfast='watch -n0.2'
-alias ww='watch w'
-alias vtop='virt-top -d 1'
+alias wf='watch -n0.2'
+alias vtop='virt-top -d 2'
 alias httpw='watch -d -n1 /usr/bin/lynx -dump -width 500 http://127.0.0.1/whm-server-status'
 alias wdd="watch -n1 killall -v -USR1 dd"
 alias wtime='watch -n0.2 date'
@@ -118,7 +113,7 @@ alias synctop='syncmem & htop'
 # disk space aliases
 alias df='\df -h'
 alias dfi='\df -i'
-alias wdf='watch -d -n1 "df -h;echo;df -i"'
+alias wdf='watch -d -n5 "df -h;echo;df -i"'
 alias cdu='clear;du -sch *'
 alias du='\du -h'
 alias du1='\du -h --max-depth=1'
@@ -148,6 +143,7 @@ alias kernels='CURRENT_KERNEL=`uname -r` ; rpm -qav | grep kernel-[2-4] | sort -
 # more tools
 alias s='sudo su'
 alias S='sudo su -'
+alias dd='dd status=progress'
 alias bmdisk='time dd if=/dev/zero of=$PWD/test.file bs=1M count=10000;ll $PWD/test.file;rm $PWD/test.file'
 alias hist='clear;history | grep $1'
 alias j='\jobs -l'
@@ -155,7 +151,10 @@ alias psaux='ps auxf'
 alias header='curl -I'
 # alias ports='netstat -tulanp'
 alias ports='\netstat -nape --inet'
+alias nmon='echo -n "cd" | nmon'
 alias wttr='clear;curl wttr.in'
+alias lsjavainstalled='clear;rpm -qa|grep jdk1;rpm -qa|grep jre1'
+alias calce='clear ; calc ; exit'
 
 
 # ping/mtr
