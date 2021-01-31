@@ -36,7 +36,7 @@ PWD=`pwd`
 
 
 function yesno() {
-	newline
+	echo
 	# parse arguments
 	local question=""
 	local default=""
@@ -127,7 +127,7 @@ function yesno() {
 			display_question
 			read answer
 			local result=$?
-			newline
+			echo
 		# with timeout
 		else
 			display_question
@@ -139,8 +139,8 @@ function yesno() {
 				if [ $timeout -le 0 ]; then
 					echo -ne "\r"
 					display_question
-					newline
-					newline
+					echo
+					echo
 					return "$default"
 				fi
 			fi
@@ -151,13 +151,13 @@ function yesno() {
 				echo -ne "\r"
 			else
 				if [ ! -z $default ]; then
-					newline
+					echo
 					return "$default"
 				fi
 			fi
 		# handle answer value
 		else
-			newline
+			echo
 			if [[ "$answer" == "y" ]] || [[ "$answer" == "Y" ]] || [[ "$answer" == y* ]] || [[ "$answer" == Y* ]]; then
 				return "$YES"
 			fi
@@ -175,7 +175,7 @@ function yesno_demo() {
 	local count_right=0
 	local count_wrong=0
 	# test 1
-	newline
+	echo
 	echo " === Test 1 === "
 	yesno "Yes or no?"
 	result=$?
@@ -185,7 +185,7 @@ function yesno_demo() {
 		echo "You answered no!"
 	fi
 	# test --timeout
-	newline
+	echo
 	echo " === Test --timeout === "
 	yesno "Test bad timeout value?" --default y
 	result=$?
@@ -193,7 +193,7 @@ function yesno_demo() {
 		yesno "This should fail?" --timeout none
 	fi
 	# test --default
-	newline
+	echo
 	echo " === Test --default === "
 	yesno "Yes or no? (default: yes)" --default yes
 	result=$?
@@ -224,7 +224,7 @@ function yesno_demo() {
 		yesno "This should take 10 seconds to timeout?" --timeout 10
 	fi
 	# allow timeout test
-	newline
+	echo
 	echo " === Allow the rest to timeout === "
 	yesno "Yes or no? (timeout: 5, default: yes)" --timeout 3 --default yes
 	result=$?
@@ -245,15 +245,15 @@ function yesno_demo() {
 		echo "You answered right!"
 	fi
 	# finished
-	newline
-	newline
+	echo
+	echo
 	echo "Finished testing!"
 	if [ $count_wrong -gt 0 ]; then
 		echo "Error! At least ${count_wrong} tests have failed!"
-		newline
+		echo
 		exit 1
 	fi
-	newline
+	echo
 }
 
 
