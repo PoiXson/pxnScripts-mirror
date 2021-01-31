@@ -67,6 +67,15 @@ function failure() {
 
 
 function title() {
+	case "$1" in
+	A|B|C)
+		TITLE_FORMAT="$1"
+		shift
+	;;
+	*)
+		TITLE_FORMAT="C"
+	;;
+	esac
 	MAX_SIZE=1
 	for ARG in "$@"; do
 		local _S=${#ARG}
@@ -77,23 +86,42 @@ function title() {
 	local _A=$(($MAX_SIZE+8))
 	local _B=$(($MAX_SIZE+2))
 	# format A
-	for LINE in "${@}"; do
-		local _S=$(($_B-${#LINE}))
-		echo -ne "${COLOR_BROWN} [ ${LINE}"; eval "printf ' '%.0s {2..$_S}"; echo -e "]${COLOR_RESET}"
-	done
-#	# format B
-#	echo
-#	echo -n " "; eval "printf '*'%.0s {1..$_A}"; echo
-#	echo -n " "; eval "printf '*'%.0s {1..$_A}"; echo
-#	echo -n " ** "; eval "printf ' '%.0s {1..$_B}"; echo " **"
-#	for LINE in "${@}"; do
-#		local _S=$(($_B-${#LINE}))
-#		echo -n " **  ${LINE}"; eval "printf ' '%.0s {1..$_S}"; echo "**"
-#	done
-#	echo -n " ** "; eval "printf ' '%.0s {1..$_B}"; echo " **"
-#	echo -n " "; eval "printf '*'%.0s {1..$_A}"; echo
-#	echo -n " "; eval "printf '*'%.0s {1..$_A}"; echo
-#	echo
+	case "$TITLE_FORMAT" in
+	A)
+		echo
+		echo -ne "$COLOR_BROWN"
+		echo -n " "; eval "printf '*'%.0s {1..$_A}"; echo
+		echo -n " "; eval "printf '*'%.0s {1..$_A}"; echo
+		echo -n " ** "; eval "printf ' '%.0s {1..$_B}"; echo " **"
+		for LINE in "${@}"; do
+			local _S=$(($_B-${#LINE}))
+			echo -n " **  ${LINE}"; eval "printf ' '%.0s {1..$_S}"; echo "**"
+		done
+		echo -n " ** "; eval "printf ' '%.0s {1..$_B}"; echo " **"
+		echo -n " "; eval "printf '*'%.0s {1..$_A}"; echo
+		echo -n " "; eval "printf '*'%.0s {1..$_A}"; echo
+		echo -ne "$COLOR_RESET"
+		echo
+	;;
+	# format B
+	B)
+		echo -ne "$COLOR_BROWN"
+		echo -n " +"; eval "printf %.0s'-' {5..$_A}"; echo "+ "
+		for LINE in "${@}"; do
+			local _S=$(($MAX_SIZE-${#LINE}))
+			echo -n " |  ${LINE}"; eval "printf ' '%.0s {0..$_S}"; echo " | "
+		done
+		echo -n " +"; eval "printf %.0s'-' {5..$_A}"; echo "+ "
+		echo -ne "$COLOR_RESET"
+	;;
+	# format C
+	*)
+		for LINE in "${@}"; do
+			local _S=$(($_B-${#LINE}))
+			echo -ne "${COLOR_BROWN} [ ${LINE}"; eval "printf ' '%.0s {2..$_S}"; echo -e "]${COLOR_RESET}"
+		done
+	;;
+	esac
 }
 
 
