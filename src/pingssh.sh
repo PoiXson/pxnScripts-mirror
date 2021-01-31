@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 ##===============================================================================
-## Copyright (c) 2013-2019 PoiXson, Mattsoft
+## Copyright (c) 2013-2021 PoiXson, Mattsoft
 ## <https://poixson.com> <https://mattsoft.net>
 ## Released under the GPL 3.0
 ##
@@ -133,10 +133,11 @@ while true; do
 		5) echo -ne " [  ***] ";;
 		6) echo -ne " [   **] ";;
 		7) echo -ne " [    *] ";;
-		8) echo -ne " [     ] ";;
-		9) echo -ne " [.    ] ";;
+		8) echo -ne " [.    ] ";;
+		9) echo -ne " [ .   ] ";;
 		10)echo -ne " [  .  ] ";;
-		11)echo -ne " [    .] "; STEP=0;;
+		11)echo -ne " [   . ] ";;
+		12)echo -ne " [    .] "; STEP=0;;
 	esac
 	echo " Waiting for ${REMOTE_USER}@${REMOTE_HOST} ..."
 	echo
