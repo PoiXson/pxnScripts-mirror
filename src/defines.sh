@@ -28,7 +28,8 @@ export NO=1
 
 
 NUM_COLORS=$(tput colors)
-if [ $NUM_COLORS -ge 8 ]; then
+if [[ $NUM_COLORS == ?(-)+([0-9]) ]] \
+&& [[ $NUM_COLORS -ge 8 ]]; then
 	COLOR_BLACK='\e[0;30m'
 	COLOR_BLUE='\e[0;34m'
 	COLOR_GREEN='\e[0;32m'
