@@ -31,17 +31,8 @@
 # yesno.sh
 
 
+source "/usr/bin/pxn/scripts/common.sh"
 PWD=`pwd`
-# load common utils script
-if [ -e "${PWD}/common.sh" ]; then
-	source "${PWD}/common.sh"
-elif [ -e "/usr/bin/shellscripts/common.sh" ]; then
-	source "/usr/bin/shellscripts/common.sh"
-else
-	wget -O "${PWD}/common.sh" "https://raw.githubusercontent.com/PoiXson/shellscripts/master/pxn/common.sh" \
-		|| exit 1
-	source "${PWD}/common.sh"
-fi
 
 
 function yesno() {
