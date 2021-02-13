@@ -1,7 +1,7 @@
 shellscripts - Collection of commonly used shell scripts
 
 
-2021-02-12 - 2.0.4
+2021-02-12 - 2.0.5
 ==================
 * few small fixes
 
