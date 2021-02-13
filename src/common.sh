@@ -20,7 +20,7 @@
 ## =============================================================================
 # common.sh
 
-source /usr/bin/pxn/scripts/defines.sh
+source /usr/bin/pxn/scripts/defines.sh  || exit 1
 
 
 
