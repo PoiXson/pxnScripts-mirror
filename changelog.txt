@@ -1,6 +1,11 @@
 shellscripts - Collection of commonly used shell scripts
 
 
+2021-02-12 - 2.0.4
+==================
+* few small fixes
+
+
 2021-02-06 - 2.0.3
 ==================
 * fixed minor bug in defines.sh script
