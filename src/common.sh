@@ -76,15 +76,15 @@ function title() {
 		TITLE_FORMAT="C"
 	;;
 	esac
-	MAX_SIZE=1
-	for ARG in "$@"; do
-		local _S=${#ARG}
-		if [ $_S -gt $MAX_SIZE ]; then
-			MAX_SIZE=$_S
+	LONGEST_LEN=1
+	for LINE in "$@"; do
+		local LEN=${#LINE}
+		if [ $LEN -gt $LONGEST_LEN ]; then
+			LONGEST_LEN=$LEN
 		fi
 	done
-	local _A=$(($MAX_SIZE+8))
-	local _B=$(($MAX_SIZE+2))
+	local _A=$(($LONGEST_LEN+8))
+	local _B=$(($LONGEST_LEN+2))
 	# format A
 	case "$TITLE_FORMAT" in
 	A)
@@ -108,7 +108,7 @@ function title() {
 		echo -ne "$COLOR_BROWN"
 		echo -n " +"; eval "printf %.0s'-' {5..$_A}"; echo "+ "
 		for LINE in "${@}"; do
-			local _S=$(($MAX_SIZE-${#LINE}))
+			local _S=$(($LONGEST_LEN-${#LINE}))
 			echo -n " |  ${LINE}"; eval "printf ' '%.0s {0..$_S}"; echo " | "
 		done
 		echo -n " +"; eval "printf %.0s'-' {5..$_A}"; echo "+ "
