@@ -59,6 +59,7 @@ echo "Install.."
 %{prefix}/chownr.sh
 %{prefix}/common.sh
 %{prefix}/defines.sh
+%{prefix}/colors.sh
 %{prefix}/ethtop.sh
 %{prefix}/iptop.pl
 %{prefix}/mklinkrel.sh
