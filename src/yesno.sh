@@ -32,7 +32,6 @@
 
 
 source "/usr/bin/pxn/scripts/common.sh"  || exit 1
-PWD=`pwd`
 
 
 function yesno() {
