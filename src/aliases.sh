@@ -144,7 +144,7 @@ alias kernels='CURRENT_KERNEL=`uname -r` ; rpm -qav | grep kernel-[2-4] | sort -
 alias s='sudo su'
 alias S='sudo su -'
 alias dd='dd status=progress'
-alias bmdisk='time dd if=/dev/zero of=$PWD/test.file bs=1M count=10000;ll $PWD/test.file;rm $PWD/test.file'
+alias bmdisk='WDIR=$(\pwd);time dd if=/dev/zero of=$WDIR/test.file bs=1M count=10000;ll $WDIR/test.file;rm $WDIR/test.file'
 alias hist='clear;history | grep $1'
 alias j='\jobs -l'
 alias psaux='ps auxf'
