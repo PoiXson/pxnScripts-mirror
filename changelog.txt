@@ -1,6 +1,13 @@
 shellscripts - Collection of commonly used shell scripts
 
 
+2021-04-23 - 2.0.6
+==================
+* added new $WDIR variable to common.sh script
+  - to replace $PWD which is changed by pushd calls
+* added new colors.sh script - to test colors in console
+
+
 2021-02-12 - 2.0.5
 ==================
 * few small fixes
