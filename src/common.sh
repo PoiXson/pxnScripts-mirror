@@ -24,6 +24,10 @@ source /usr/bin/pxn/scripts/defines.sh  || exit 1
 
 
 
+WDIR=$( \pwd )
+
+
+
 # debug mode
 DEBUG=$NO
 if [ -e /usr/bin/pxn/scripts/.debug ]; then
