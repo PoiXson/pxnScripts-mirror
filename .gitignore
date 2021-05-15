@@ -8,12 +8,8 @@ debug
 DEBUG
 .debug
 
-pxnloader.php
 .htdb*
 config.php
-public/static/bootstrap
-public/static/jquery
-public/static/bootswatch
 data/
 error_log
 log/
