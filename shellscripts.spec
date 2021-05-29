@@ -24,8 +24,10 @@ echo
 echo "Install.."
 
 # create dirs
-%{__install} -d -m 0755  "%{buildroot}%{prefix}/"                 || exit 1
-%{__install} -d -m 0755  "%{buildroot}%{_sysconfdir}/profile.d/"  || exit 1
+%{__install} -d -m 0755  \
+	"%{buildroot}%{prefix}/"                 \
+	"%{buildroot}%{_sysconfdir}/profile.d/"  \
+		|| exit 1
 
 # copy files
 %{__install} -m 0644  "%{_topdir}/../src/"*.sh  "%{buildroot}%{prefix}/"  || exit 1
