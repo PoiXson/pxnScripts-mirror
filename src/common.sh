@@ -20,6 +20,8 @@
 ## =============================================================================
 # common.sh
 
+set -o pipefail
+
 source /usr/bin/pxn/scripts/defines.sh  || exit 1
 
 
