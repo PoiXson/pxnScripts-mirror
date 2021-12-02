@@ -1,4 +1,4 @@
-##===============================================================================
+##==============================================================================
 ## Copyright (c) 2013-2021 PoiXson, Mattsoft
 ## <https://poixson.com> <https://mattsoft.net>
 ## Released under the GPL 3.0
@@ -17,7 +17,7 @@
 ##
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
-## =============================================================================
+##==============================================================================
 # common.sh
 
 set -o pipefail
