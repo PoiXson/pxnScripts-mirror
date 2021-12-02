@@ -39,7 +39,7 @@ if [ -e ~/.debug ]; then
 	DEBUG=$YES
 fi
 if [ $DEBUG -eq $YES ]; then
-	echo "[ DEBUG Mode ]"
+	echo "[ DEBUG Mode ]" >&2
 	# Print commands when executed
 	set -x
 	# Variables that are not set are errors
@@ -55,19 +55,16 @@ path_remove ()  { export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'
 
 
 function error_msg() {
-	echo "$*" 1>&2
+	echo "$*" >&2
 }
-
 function notice() {
-	echo -e "${COLOR_LIGHTCYAN} [NOTICE] ${COLOR_RESET}$*"
+	echo -e "${COLOR_LIGHTCYAN} [NOTICE] ${COLOR_RESET}$*" >&2
 }
-
 function warning() {
-	echo -e "${COLOR_LIGHTRED} [WARNING] ${COLOR_RESET}$*"
+	echo -e "${COLOR_LIGHTRED} [WARNING] ${COLOR_RESET}$*" >&2
 }
-
 function failure() {
-	echo -e "${COLOR_RED} [FAILURE] ${COLOR_RESET}$*"
+	echo -e "${COLOR_RED} [FAILURE] ${COLOR_RESET}$*" >&2
 }
 
 
