@@ -120,6 +120,7 @@ fi
 
 # wait for host to come online
 STEP=0
+LOOP_COUNT=2
 while true; do
 	clear
 	echo
@@ -137,9 +138,15 @@ while true; do
 		9) echo -ne " [ .   ] ";;
 		10)echo -ne " [  .  ] ";;
 		11)echo -ne " [   . ] ";;
-		12)echo -ne " [    .] "; STEP=0;;
+		12)echo -ne " [    .] ";
+			STEP=0
+			((LOOP_COUNT++))
+		;;
 	esac
-	echo " Waiting for ${REMOTE_USER}@${REMOTE_HOST} ..."
+	echo -n " Waiting for ${REMOTE_USER}@${REMOTE_HOST} "
+	for (( i=0; $i<$LOOP_COUNT; i++ )); do
+		echo -n "."
+	done
 	echo
 
 	# ping remote host
