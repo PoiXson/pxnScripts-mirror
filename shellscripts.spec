@@ -34,18 +34,18 @@ echo "Install.."
 %{__install} -m 0644  "%{_topdir}/../src/"*.pl  "%{buildroot}%{prefix}/"  || exit 1
 
 # create symlinks
-%{__ln_s} -f  "%{prefix}/chmodr.sh"       "%{buildroot}%{_bindir}/chmodr"       || exit 1
-%{__ln_s} -f  "%{prefix}/chownr.sh"       "%{buildroot}%{_bindir}/chownr"       || exit 1
-%{__ln_s} -f  "%{prefix}/ethtop.sh"       "%{buildroot}%{_bindir}/ethtop"       || exit 1
-%{__ln_s} -f  "%{prefix}/iptop.pl"        "%{buildroot}%{_bindir}/iptop"        || exit 1
-%{__ln_s} -f  "%{prefix}/mklinkrel.sh"    "%{buildroot}%{_bindir}/mklinkrel"    || exit 1
-%{__ln_s} -f  "%{prefix}/monitorhost.sh"  "%{buildroot}%{_bindir}/monitorhost"  || exit 1
-%{__ln_s} -f  "%{prefix}/pingssh.sh"      "%{buildroot}%{_bindir}/pingssh"      || exit 1
-%{__ln_s} -f  "%{prefix}/sshkeygen.sh"    "%{buildroot}%{_bindir}/sshkeygen"    || exit 1
-%{__ln_s} -f  "%{prefix}/timestamp.sh"    "%{buildroot}%{_bindir}/timestamp"    || exit 1
-%{__ln_s} -f  "%{prefix}/yesno.sh"        "%{buildroot}%{_bindir}/yesno"        || exit 1
+%{__ln_s} -f  "pxn/scripts/chmodr.sh"       "%{buildroot}%{_bindir}/chmodr"       || exit 1
+%{__ln_s} -f  "pxn/scripts/chownr.sh"       "%{buildroot}%{_bindir}/chownr"       || exit 1
+%{__ln_s} -f  "pxn/scripts/ethtop.sh"       "%{buildroot}%{_bindir}/ethtop"       || exit 1
+%{__ln_s} -f  "pxn/scripts/iptop.pl"        "%{buildroot}%{_bindir}/iptop"        || exit 1
+%{__ln_s} -f  "pxn/scripts/mklinkrel.sh"    "%{buildroot}%{_bindir}/mklinkrel"    || exit 1
+%{__ln_s} -f  "pxn/scripts/monitorhost.sh"  "%{buildroot}%{_bindir}/monitorhost"  || exit 1
+%{__ln_s} -f  "pxn/scripts/pingssh.sh"      "%{buildroot}%{_bindir}/pingssh"      || exit 1
+%{__ln_s} -f  "pxn/scripts/sshkeygen.sh"    "%{buildroot}%{_bindir}/sshkeygen"    || exit 1
+%{__ln_s} -f  "pxn/scripts/timestamp.sh"    "%{buildroot}%{_bindir}/timestamp"    || exit 1
+%{__ln_s} -f  "pxn/scripts/yesno.sh"        "%{buildroot}%{_bindir}/yesno"        || exit 1
 # create profile.d symlink
-%{__ln_s} -f  "%{prefix}/profile.sh"  "%{buildroot}%{_sysconfdir}/profile.d/shellscripts.sh"  || exit 1
+%{__ln_s} -f  "../..%{prefix}/profile.sh"  "%{buildroot}%{_sysconfdir}/profile.d/shellscripts.sh"  || exit 1
 
 
 
