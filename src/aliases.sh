@@ -145,6 +145,11 @@ alias s='sudo su'
 alias S='sudo su -'
 alias dd='dd status=progress'
 alias bmdisk='WDIR=$(\pwd);time dd if=/dev/zero of=$WDIR/test.file bs=1M count=10000;ll $WDIR/test.file;rm $WDIR/test.file'
+
+
+# ffmpeg
+alias ffmpeg_extract_audio='\ffmpeg -i "$1" -vn -ar 44100 -ac 2 -ab 192k -f mp3 "$1".mp3'
+alias ffmpeg_replace_audio='\ffmpeg -i "$1" -i "$1".wav -c:v copy -map 0:v:0 -map 1:a:0 "$1"-new.mp4
 alias hist='clear;history | grep $1'
 alias j='\jobs -l'
 alias psaux='ps auxf'
@@ -199,6 +204,9 @@ if [ -e /usr/bin/gradle ]; then
 	alias g='clear;gradle --daemon'
 	alias ge='clear;gradle --daemon cleanEclipse eclipse'
 fi
+
+
+alias valg='valgrind --leak-check=yes'
 
 
 # iscsi tools
