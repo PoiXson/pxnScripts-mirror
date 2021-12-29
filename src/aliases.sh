@@ -25,6 +25,13 @@
 export PS1='\u@${HOSTNAME%%.*} [\w]\$ '
 
 
+alias c='clear'
+alias e='exit'
+
+# compression enabled
+alias scp='scp -C'
+
+
 # cd aliases
 alias ~='cd ~'
 alias ..='cd ..'
@@ -38,24 +45,16 @@ alias .5='cd ../../../../..'
 alias .6='cd ../../../../../..'
 
 
-# exit/kill aliases
-alias e='exit'
-alias killall='\killall -v'
-alias c='clear'
-
-
-# file aliases
+# file handling
 alias rm='\rm -v -i --preserve-root'
 alias cp='\cp -v -i'
 alias mv='\mv -v -i'
 alias cwd='pwd'
 alias ccat='clear;cat'
 alias untar='\tar -zxvf'
-# compression enabled
-alias scp='scp -C'
 
 
-# list file aliases
+# list files
 alias ls='\ls -A --color=auto'
 alias ll='ls -lhs'
 
@@ -66,9 +65,6 @@ alias l.='ll.'
 alias cls='clear;pwd;ls'
 alias cll='clear;pwd;ll'
 alias cld='clear;pwd;ld'
-
-alias wll='watch -d -n2 "ls -lshA"'
-alias Wll='watch -d -n0.2 "ls -lshA"'
 
 # sort by extension
 alias lx='ls -lXB'
@@ -97,11 +93,13 @@ alias dayofyear='\date +"%j"'
 # watch aliases
 alias W='watch'
 alias wf='watch -n0.2'
+alias wll='watch -d -n2 "ls -lshA"'
+alias Wll='watch -d -n0.2 "ls -lshA"'
 alias vtop='virt-top -d 2'
-alias httpw='watch -d -n1 /usr/bin/lynx -dump -width 500 http://127.0.0.1/whm-server-status'
 alias wdd="watch -n1 killall -v -USR1 dd"
 alias wtime='watch -n0.2 date'
 alias wip='watch "ip addr | grep inet | sort"'
+alias httpw='watch -d -n1 /usr/bin/lynx -dump -width 500 http://127.0.0.1/whm-server-status'
 
 
 # memory
@@ -113,7 +111,7 @@ alias synctop='syncmem & htop'
 # disk space aliases
 alias df='\df -h'
 alias dfi='\df -i'
-alias wdf='watch -d -n5 "df -h;echo;df -i"'
+alias wdf='\watch -d -n5 "df -h;echo;df -i"'
 alias cdu='clear;du -sch *'
 alias du='\du -h'
 alias du1='\du -h --max-depth=1'
@@ -141,29 +139,27 @@ alias kernels='CURRENT_KERNEL=`uname -r` ; rpm -qav | grep kernel-[2-6] | sort -
 
 
 # more tools
-alias s='sudo su'
-alias S='sudo su -'
 alias dd='dd status=progress'
 alias bmdisk='WDIR=$(\pwd);time dd if=/dev/zero of=$WDIR/test.file bs=1M count=10000;ll $WDIR/test.file;rm $WDIR/test.file'
+
+alias hist='clear;\history | grep $1'
+alias j='\jobs -l'
+alias psaux='ps auxf'
+alias header='curl -I'
+# alias ports='\netstat -tulanp'
+alias ports='\netstat -nape --inet'
+alias nmon='echo -n "cd" | nmon'
+alias wttr='clear;\curl wttr.in'
+alias calce='clear ; calc ; exit'
 
 
 # ffmpeg
 alias ffmpeg_extract_audio='\ffmpeg -i "$1" -vn -ar 44100 -ac 2 -ab 192k -f mp3 "$1".mp3'
-alias ffmpeg_replace_audio='\ffmpeg -i "$1" -i "$1".wav -c:v copy -map 0:v:0 -map 1:a:0 "$1"-new.mp4
-alias hist='clear;history | grep $1'
-alias j='\jobs -l'
-alias psaux='ps auxf'
-alias header='curl -I'
-# alias ports='netstat -tulanp'
-alias ports='\netstat -nape --inet'
-alias nmon='echo -n "cd" | nmon'
-alias wttr='clear;curl wttr.in'
-alias lsjavainstalled='clear;rpm -qa|grep jdk1;rpm -qa|grep jre1'
-alias calce='clear ; calc ; exit'
+alias ffmpeg_replace_audio='\ffmpeg -i "$1" -i "$1".wav -c:v copy -map 0:v:0 -map 1:a:0 "$1"-new.mp4'
 
 
 # ping/mtr
-alias ping='clear;\ping'
+alias ping='clear;ping'
 alias pinga='clear;\ping -A -D'
 alias ping8='clear;\ping -A -D 8.8.8.8'
 if [ -e /usr/sbin/mtr ]; then
@@ -222,7 +218,7 @@ if [ -e /usr/sbin/zpool ]; then
 	alias wz='watch "zpool iostat -v 2>&1 | sed \"/^\s*$/d\" ; zpool status 2>&1 | sed \"/^\\s*$/d\" | grep -v \"errors: No known data errors\" ; echo ; df -h ; zfs get compressratio 2>&1 | grep --invert-match --color=none 1.00"'
 	alias zfree='watch -n0.5 zpool get freeing'
 	alias zfrag='zpool get fragmentation'
-	# snapshot aliases
+	# snapshots
 	alias snapshots='clear;zfs list -t snapshot'
 	alias snaps='snapshots'
 	alias wsnaps='watch -d -n10 "snapshots;echo;df -h"'
@@ -230,6 +226,8 @@ if [ -e /usr/sbin/zpool ]; then
 fi
 #alias zstatus='zpool status -x'
 
+
+alias killall='\killall -v'
 
 # shutdown/reboot
 alias reboot='echo ; hostname ; ip addr show | grep --color=never "inet " | grep -v "127.0.0.1" | awk '"'"'{print $2}'"'"' ; yesno "Reboot?"   --timeout 10 --default y && shutdown -r now'
