@@ -144,10 +144,14 @@ while true; do
 		;;
 	esac
 	echo -n " Waiting for ${REMOTE_USER}@${REMOTE_HOST} "
-	for (( i=0; $i<$LOOP_COUNT; i++ )); do
-		echo -n "."
-	done
-	echo
+	if [[ $LOOP_COUNT -gt 10 ]]; then
+		echo "...[$LOOP_COUNT]..."
+	else
+		for (( i=0; $i<$LOOP_COUNT; i++ )); do
+			echo -n "."
+		done
+		echo
+	fi
 
 	# ping remote host
 	PING_RESULT=`/usr/bin/ping -w1 -c1 ${REMOTE_HOST} 1>/dev/null 2>/dev/null && echo 0 || echo 1`
