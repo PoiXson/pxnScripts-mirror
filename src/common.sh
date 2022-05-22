@@ -58,13 +58,25 @@ function error_msg() {
 	echo "$*" >&2
 }
 function notice() {
-	echo -e "${COLOR_LIGHTCYAN} [NOTICE] ${COLOR_RESET}$*" >&2
+	if [[ -z $1 ]]; then
+		echo >&2
+	else
+		echo -e "${COLOR_LIGHTCYAN} [NOTICE] ${COLOR_RESET}$*" >&2
+	fi
 }
 function warning() {
-	echo -e "${COLOR_LIGHTRED} [WARNING] ${COLOR_RESET}$*" >&2
+	if [[ -z $1 ]]; then
+		echo >&2
+	else
+		echo -e "${COLOR_LIGHTRED} [WARNING] ${COLOR_RESET}$*" >&2
+	fi
 }
 function failure() {
-	echo -e "${COLOR_RED} [FAILURE] ${COLOR_RESET}$*" >&2
+	if [[ -z $1 ]]; then
+		echo >&2
+	else
+		echo -e "${COLOR_RED} [FAILURE] ${COLOR_RESET}$*" >&2
+	fi
 }
 
 
