@@ -156,7 +156,7 @@ while true; do
 	# ping remote host
 	PING_RESULT=`/usr/bin/ping -w1 -c1 ${REMOTE_HOST} 1>/dev/null 2>/dev/null && echo 0 || echo 1`
 	if [[ $PING_RESULT -eq 0 ]]; then
-		echo
+		echo " :) "
 		echo
 		if ssh "${1}" ; then
 			echo

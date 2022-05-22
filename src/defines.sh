@@ -27,7 +27,7 @@ export NO=1
 
 
 
-NUM_COLORS=$(tput colors 2>/dev/null)
+NUM_COLORS=$( tput colors 2>/dev/null )
 if [[ $NUM_COLORS == ?(-)+([0-9]) ]] \
 && [[ $NUM_COLORS -ge 8 ]]; then
 	COLOR_BLACK='\e[0;30m'
