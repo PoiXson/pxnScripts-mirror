@@ -1,6 +1,13 @@
 shellscripts - Collection of commonly used shell scripts
 
 
+2022-05-21 - 2.0.8
+==================
+* improved handling of long waits in pingssh script
+* added and fixed aliases
+* fixed notice() warning() and failure() functions when printing a blank line
+
+
 2021-12-02 - 2.0.7
 ==================
 * cleanup and polish
