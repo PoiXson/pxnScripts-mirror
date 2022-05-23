@@ -1,5 +1,5 @@
-Name    : shellscripts
-Version : 2.0.%{?build_number}%{!?build_number:x}
+Name    : pxnscripts
+Version : 2.1.%{?build_number}%{!?build_number:x}
 Release : 1
 Summary : A collection of commonly used shell scripts
 
@@ -13,6 +13,7 @@ URL       : https://poixson.com/
 Prefix: %{_bindir}/pxn/scripts
 %define _rpmfilename  %%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm
 
+Obsoletes: shellscripts
 %description
 A collection of commonly used shell scripts for CentOS and Fedora.
 
