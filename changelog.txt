@@ -1,6 +1,14 @@
 shellscripts - Collection of commonly used shell scripts
 
 
+2022-05-22 - 2.1.0
+==================
+* renamed from shellscripts to pxnscripts
+* removed /usr/bin symlinks to scripts
+* moved pingssh to its own package
+* renaming monitorhost script to monhost
+
+
 2022-05-21 - 2.0.8
 ==================
 * improved handling of long waits in pingssh script
