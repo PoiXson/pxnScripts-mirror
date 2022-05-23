@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 ##==============================================================================
-## Copyright (c) 2013-2019 PoiXson, Mattsoft
+## Copyright (c) 2013-2022 PoiXson, Mattsoft
 ## <https://poixson.com> <https://mattsoft.net>
 ## Released under the GPL 3.0
 ##
