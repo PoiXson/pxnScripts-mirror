@@ -3,6 +3,6 @@
 
 
 # aliases
-if [ -e /usr/bin/pxn/scripts/pingssh.sh ]; then
+if [ -e /usr/bin/pingssh ]; then
 	alias pssh='pingssh'
 fi
