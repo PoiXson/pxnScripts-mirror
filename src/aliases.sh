@@ -166,7 +166,6 @@ if [ -e /usr/sbin/mtr ]; then
 	alias mtr='\mtr -4 -b'
 	alias mtr8='\mtr -4 -b 8.8.8.8'
 fi
-alias pssh='pingssh'
 
 
 # iptables aliases
