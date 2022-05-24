@@ -54,6 +54,13 @@ function path_remove()  { export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 
 
 
 
+# rust/cargo
+if [[ -d "$HOME/.cargo/bin/" ]]; then
+	path_append "$HOME/.cargo/bin"
+fi
+
+
+
 function error_msg() {
 	echo "$*" >&2
 }
