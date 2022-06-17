@@ -11,14 +11,24 @@ Packager : PoiXson <support@poixson.com>
 URL      : https://poixson.com/
 
 Requires : bash, screen, wget, curl, rsync, zip, unzip, grep
-Requires : pingssh
+Requires : pxnaliases, pingssh
 Obsoletes: shellscripts
+
+
+
+%package -n pxnaliases
+Summary : Helpful aliases for common shell commands.
 
 %package -n pingssh
 Summary : Pings a remote host until it's able to connect with ssh.
 
+
+
 %description
 A collection of commonly used shell scripts for CentOS and Fedora.
+
+%description -n pxnaliases
+Helpful aliases for common shell commands.
 
 %description -n pingssh
 Pings a remote host until it's able to connect with ssh.
@@ -55,6 +65,7 @@ echo "Install.."
 		"%{buildroot}%{prefix}/"  || exit 1
 # /etc/profile.d/
 %{__install} -m 0644  "%{_topdir}/../src/etc-profile.d-pxnscripts.sh"  "%{buildroot}%{_sysconfdir}/profile.d/pxnscripts.sh"  || exit 1
+%{__install} -m 0644  "%{_topdir}/../src/etc-profile.d-pxnaliases.sh"  "%{buildroot}%{_sysconfdir}/profile.d/pxnaliases.sh"  || exit 1
 %{__install} -m 0644  "%{_topdir}/../src/etc-profile.d-pingssh.sh"     "%{buildroot}%{_sysconfdir}/profile.d/pingssh.sh"     || exit 1
 
 
@@ -64,7 +75,6 @@ echo "Install.."
 %defattr(0555, root, root, 0755)
 %dir %{prefix}/
 %{prefix}/common.sh
-%{prefix}/aliases.sh
 %{prefix}/colors.sh
 %{prefix}/defines.sh
 %{_bindir}/chmodr
@@ -75,6 +85,11 @@ echo "Install.."
 %{_bindir}/timestamp
 %{_bindir}/yesno
 %{_sysconfdir}/profile.d/pxnscripts.sh
+
+%files -n pxnaliases
+%defattr(0555, root, root, 0755)
+%{prefix}/aliases.sh
+%{_sysconfdir}/profile.d/pxnaliases.sh
 
 %files -n pingssh
 %defattr(0555, root, root, 0755)
