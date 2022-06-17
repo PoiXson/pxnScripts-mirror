@@ -93,10 +93,9 @@ alias dayofyear='\date +"%j"'
 
 # watch aliases
 alias W='watch -n 0.2'
-alias ww='watch w'
+alias ww='watch -d w'
 alias wll='watch -d -n 2   "ls -lshA"'
 alias Wll='watch -d -n 0.2 "ls -lshA"'
-alias wdd="watch -n1 killall -v -USR1 dd"
 alias wtime='watch -n0.2 date'
 alias wip='watch "ip addr | grep inet | sort"'
 
@@ -132,6 +131,7 @@ alias screenc='screen -mS'
 alias yumy='yum -y'
 alias yumup='yum clean all && clear && yum update'
 alias yumupy='yumup -y'
+
 
 #alias kernels='rpm -qav | grep kernel-[2-4] ; echo -ne "Current:\nkernel-" ; uname -r'
 alias kernels='CURRENT_KERNEL=`uname -r` ; rpm -qav | grep kernel-[2-6] | sort -V | while read -r LINE ; do if [ "$LINE" == "kernel-$CURRENT_KERNEL" ]; then echo "$LINE <active>" ; else echo "$LINE" ; fi done'
