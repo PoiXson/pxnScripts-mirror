@@ -27,6 +27,7 @@ export PS1='\u@${HOSTNAME%%.*} [\w]\$ '
 
 alias c='clear'
 alias e='exit'
+alias w='w -f'
 
 # compression enabled
 alias scp='scp -C'
@@ -96,6 +97,7 @@ alias wf='watch -n0.2'
 alias wll='watch -d -n2 "ls -lshA"'
 alias Wll='watch -d -n0.2 "ls -lshA"'
 alias vtop='virt-top -d 2'
+alias ww='watch w'
 alias wdd="watch -n1 killall -v -USR1 dd"
 alias wtime='watch -n0.2 date'
 alias wip='watch "ip addr | grep inet | sort"'
