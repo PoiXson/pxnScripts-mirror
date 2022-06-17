@@ -79,7 +79,7 @@ alias chown='\chown -c --preserve-root'
 alias chgrp='\chgrp -c --preserve-root'
 
 
-# parse aliases
+# parse
 alias grep='grep --color=auto'
 alias diff='colordiff'
 
@@ -92,16 +92,13 @@ alias dayofyear='\date +"%j"'
 
 
 # watch aliases
-alias W='watch'
-alias wf='watch -n0.2'
-alias wll='watch -d -n2 "ls -lshA"'
-alias Wll='watch -d -n0.2 "ls -lshA"'
-alias vtop='virt-top -d 2'
+alias W='watch -n 0.2'
 alias ww='watch w'
+alias wll='watch -d -n 2   "ls -lshA"'
+alias Wll='watch -d -n 0.2 "ls -lshA"'
 alias wdd="watch -n1 killall -v -USR1 dd"
 alias wtime='watch -n0.2 date'
 alias wip='watch "ip addr | grep inet | sort"'
-alias httpw='watch -d -n1 /usr/bin/lynx -dump -width 500 http://127.0.0.1/whm-server-status'
 
 
 # memory
@@ -143,7 +140,7 @@ alias kernels='CURRENT_KERNEL=`uname -r` ; rpm -qav | grep kernel-[2-6] | sort -
 # more tools
 alias dd='dd status=progress'
 alias bmdisk='WDIR=$(\pwd);time dd if=/dev/zero of=$WDIR/test.file bs=1M count=10000;ll $WDIR/test.file;rm $WDIR/test.file'
-
+alias vtop='virt-top -d 2'
 alias hist='clear;\history | grep $1'
 alias j='\jobs -l'
 alias psaux='ps auxf'
@@ -153,6 +150,7 @@ alias ports='\netstat -nape --inet'
 alias nmon='echo -n "cd" | nmon'
 alias wttr='clear;\curl wttr.in'
 alias calce='clear ; calc ; exit'
+#alias httpw='watch -d -n1 /usr/bin/lynx -dump -width 500 http://127.0.0.1/whm-server-status'
 
 
 # ffmpeg
