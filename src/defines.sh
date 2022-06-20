@@ -27,9 +27,7 @@ export NO=1
 
 
 
-NUM_COLORS=$( tput colors 2>/dev/null )
-if [[ $NUM_COLORS == ?(-)+([0-9]) ]] \
-&& [[ $NUM_COLORS -ge 8 ]]; then
+function enable_colors() {
 	COLOR_BLACK='\e[0;30m'
 	COLOR_BLUE='\e[0;34m'
 	COLOR_GREEN='\e[0;32m'
@@ -47,7 +45,8 @@ if [[ $NUM_COLORS == ?(-)+([0-9]) ]] \
 	COLOR_YELLOW='\e[1;33m'
 	COLOR_WHITE='\e[1;37m'
 	COLOR_RESET='\e[0m'
-else
+}
+function disable_colors() {
 	COLOR_BLACK=''
 	COLOR_BLUE=''
 	COLOR_GREEN=''
@@ -65,4 +64,18 @@ else
 	COLOR_YELLOW=''
 	COLOR_WHITE=''
 	COLOR_RESET=''
+}
+
+
+
+if [[ -z $NO_COLORS ]] || [[ $NO_COLORS -ne $YES ]]; then
+	NUM_COLORS=$( tput colors 2>/dev/null )
+else
+	NUM_COLORS=0
+fi
+if [[ $NUM_COLORS == ?(-)+([0-9]) ]] \
+&& [[ $NUM_COLORS -ge 8 ]]; then
+	enable_colors
+else
+	disable_colors
 fi
