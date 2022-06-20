@@ -64,6 +64,14 @@ fi
 function error_msg() {
 	echo "$*" >&2
 }
+function info() {
+	if [[ -z $1 ]]; then
+		echo >&2
+	else
+		echo -e "${COLOR_DARKGRAY} [INFO] ${COLOR_RESET}$*" >&2
+	fi
+
+}
 function notice() {
 	if [[ -z $1 ]]; then
 		echo >&2
