@@ -97,11 +97,13 @@ function failure() {
 
 
 function title() {
+	# format
 	case "$1" in
 	A|B|C)
 		TITLE_FORMAT="$1"
 		shift
 	;;
+	# default format
 	*)
 		TITLE_FORMAT="C"
 	;;
