@@ -1,6 +1,17 @@
 shellscripts - Collection of commonly used shell scripts
 
 
+2022-06-21 - 2.1.8
+==================
+* moved aliases.sh script to its own rpm package
+* added aliases for w command
+* removed old wdd alias
+* added search path ~/.cargo/bin
+* added info() function to common.sh
+* improved handling of colors - able to change state
+* few other small fixes
+
+
 2022-05-22 - 2.1.0
 ==================
 * renamed from shellscripts to pxnscripts
