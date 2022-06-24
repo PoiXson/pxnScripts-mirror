@@ -127,18 +127,30 @@ while true; do
 
 	((STEP++))
 	case $STEP in
-		1) echo -ne " [*    ] ";;
-		2) echo -ne " [**   ] ";;
-		3) echo -ne " [***  ] ";;
-		4) echo -ne " [ *** ] ";;
-		5) echo -ne " [  ***] ";;
-		6) echo -ne " [   **] ";;
-		7) echo -ne " [    *] ";;
-		8) echo -ne " [.    ] ";;
-		9) echo -ne " [ .   ] ";;
-		10)echo -ne " [  .  ] ";;
-		11)echo -ne " [   . ] ";;
-		12)echo -ne " [    .] ";
+		1)  echo -ne " [~    ] ";;
+		2)  echo -ne " [ ~   ] ";;
+		3)  echo -ne " [  ~  ] ";;
+		4)  echo -ne " [   ~ ] ";;
+		5)  echo -ne " [    ~] ";;
+		6)  echo -ne " [<    ] ";;
+		7)  echo -ne " [-=   ] ";;
+		8)  echo -ne " [--<  ] ";;
+		9)  echo -ne " [ --= ] ";;
+		10) echo -ne " [  --<] ";;
+		11) echo -ne " [   --] ";;
+		12) echo -ne " [    -] ";
+#		1) echo -ne " [*    ] ";;
+#		2) echo -ne " [**   ] ";;
+#		3) echo -ne " [***  ] ";;
+#		4) echo -ne " [ *** ] ";;
+#		5) echo -ne " [  ***] ";;
+#		6) echo -ne " [   **] ";;
+#		7) echo -ne " [    *] ";;
+#		8) echo -ne " [.    ] ";;
+#		9) echo -ne " [ .   ] ";;
+#		10)echo -ne " [  .  ] ";;
+#		11)echo -ne " [   . ] ";;
+#		12)echo -ne " [    .] ";
 			STEP=0
 			((LOOP_COUNT++))
 		;;
