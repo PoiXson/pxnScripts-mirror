@@ -1,6 +1,12 @@
 shellscripts - Collection of commonly used shell scripts
 
 
+2022-06-30 - 2.1.11
+===================
+* added a new animation to pingssh script
+* fixed and improved yesno script
+
+
 2022-06-21 - 2.1.8
 ==================
 * moved aliases.sh script to its own rpm package
