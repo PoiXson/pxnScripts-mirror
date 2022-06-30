@@ -31,6 +31,7 @@
 # yesno.sh
 
 
+
 source "/usr/bin/pxn/scripts/common.sh"  || exit 1
 
 
@@ -54,7 +55,13 @@ function DisplayQuestion() {
 	if [ $timeout -lt 0 ]; then
 		echo -n "${question}${options}"
 	else
-		echo -n " <${timeout}> ${question}${options}"
+		local _S=$(($timeout_width-${#timeout}))
+		if [[ $_S -gt 0 ]]; then
+			local _P=$( eval "printf ' '%.0s {1..$_S}" )
+		else
+			local _P=""
+		fi
+		echo -n " <$_P${timeout}> ${question}${options}"
 	fi
 }
 
@@ -119,9 +126,12 @@ function yesno() {
 		;;
 		esac
 	done
-	if [[ $timeout -gt 0 ]] && [[ -z $default ]]; then
-		failure "Using --timeout requires a --default answer."
-		return "$NO"
+	if [[ $timeout -gt 0 ]]; then
+		timeout_width=${#timeout}
+		if [[ -z $default ]]; then
+			failure "Using --timeout requires a --default answer."
+			return "$NO"
+		fi
 	fi
 	local options=""
 	if [ "$default" == "$YES" ]; then
