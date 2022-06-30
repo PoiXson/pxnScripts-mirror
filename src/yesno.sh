@@ -50,6 +50,14 @@ function DisplayHelp() {
 
 
 
+function DisplayQuestion() {
+	if [ $timeout -lt 0 ]; then
+		echo -n "${question}${options}"
+	else
+		echo -n " <${timeout}> ${question}${options}"
+	fi
+}
+
 function yesno() {
 	echo
 	# parse arguments
@@ -123,26 +131,18 @@ function yesno() {
 	else
 		local options="[y/n] "
 	fi
-	# display question
-	function display_question() {
-		if [ $timeout -lt 0 ]; then
-			echo -n "${question}${options}"
-		else
-			echo -n " <${timeout}> ${question}${options}"
-		fi
-	}
 	# ask until answered
 	while true; do
 		local answer=""
 		# no timeout
 		if [[ $timeout -lt 0 ]]; then
-			display_question
+			DisplayQuestion
 			read answer
 			local result=$?
 			echo
 		# with timeout
 		else
-			display_question
+			DisplayQuestion
 			read -t 1 answer
 			local result=$?
 			# 1 second timeout
@@ -150,7 +150,7 @@ function yesno() {
 				let timeout=timeout-1
 				if [ $timeout -le 0 ]; then
 					echo -ne "\r"
-					display_question
+					DisplayQuestion
 					echo
 					echo
 					return "$default"
