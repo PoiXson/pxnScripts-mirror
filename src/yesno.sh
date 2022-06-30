@@ -111,9 +111,6 @@ function yesno() {
 		;;
 		esac
 	done
-	if [[ -z $question ]]; then
-		errcho "Missing question argument."
-	fi
 	if [[ $timeout -gt 0 ]] && [[ -z $default ]]; then
 		failure "Using --timeout requires a --default answer."
 		if [ -z $default ]; then
