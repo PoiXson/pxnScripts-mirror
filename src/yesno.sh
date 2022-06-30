@@ -34,6 +34,22 @@
 source "/usr/bin/pxn/scripts/common.sh"  || exit 1
 
 
+
+function DisplayHelp() {
+	echo -e "${COLOR_BROWN}Usage:${COLOR_RESET}"
+	echo    "  yesno [options] [question]"
+	echo
+	echo -e "${COLOR_BROWN}Options:${COLOR_RESET}"
+	echo -e "  ${COLOR_GREEN}-d, --default${COLOR_RESET}             Default answer for timeout"
+	echo -e "  ${COLOR_GREEN}-t, --timeout${COLOR_RESET}             Number of seconds to wait for an answer"
+	echo
+	echo -e "  ${COLOR_GREEN}-h, --help${COLOR_RESET}                Display this help message and exit"
+	echo
+	exit 1
+}
+
+
+
 function yesno() {
 	echo
 	# parse arguments
@@ -75,6 +91,10 @@ function yesno() {
 				fi
 			fi
 			shift
+		;;
+		-h|--help)
+			DisplayHelp
+			exit 1
 		;;
 		-*)
 			errcho "Unrecognized option: $1"
