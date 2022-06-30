@@ -62,7 +62,7 @@ function yesno() {
 			shift
 			local t="$1"
 			if [ -z $t ]; then
-				errcho "Missing --default value."
+				failure "Missing --default value."
 				return "$NO"
 			fi
 			if   [[ "$t" == "y" ]] || [[ "$t" == "Y" ]] || [[ "$t" == y* ]] || [[ "$t" == Y* ]]; then
@@ -70,7 +70,7 @@ function yesno() {
 			elif [[ "$t" == "n" ]] || [[ "$t" == "N" ]] || [[ "$t" == n* ]] || [[ "$t" == N* ]]; then
 				local default="$NO"
 			else
-				errcho "Illegal default answer: ${default}"
+				failure "Illegal default answer: ${default}"
 				return "$NO"
 			fi
 			shift
@@ -79,11 +79,11 @@ function yesno() {
 			shift
 			local timeout="$1"
 			if [ -z $timeout ]; then
-				errcho "Missing --timeout value."
+				failure "Missing --timeout value."
 				return "$default"
 			fi
 			if [[ ! "$timeout" == ?(-)+([0-9]) ]]; then
-				errcho "Illegal timeout value: ${timeout}"
+				failure "Illegal timeout value: ${timeout}"
 				if [ -z $default ]; then
 					return "$NO"
 				else
@@ -97,7 +97,7 @@ function yesno() {
 			exit 1
 		;;
 		-*)
-			errcho "Unrecognized option: $1"
+			failure "Unrecognized option: $1"
 			shift
 			if [ -z $default ]; then
 				return "$NO"
@@ -115,7 +115,7 @@ function yesno() {
 		errcho "Missing question argument."
 	fi
 	if [[ $timeout -gt 0 ]] && [[ -z $default ]]; then
-		errcho "Using --timeout requires a --default answer."
+		failure "Using --timeout requires a --default answer."
 		if [ -z $default ]; then
 			return "$NO"
 		else
@@ -286,8 +286,8 @@ if [[ $(basename "$0" .sh) == 'yesno' ]]; then
 		fi
 	fi
 	if [ $# -lt 1 ]; then
-		errcho "Missing question argument: yesno <question> [--timeout N] [--default X]"
-		exit 1
+		failure "Missing question argument: yesno <question> [--timeout N] [--default X]"
+		failure ; exit 1
 	fi
 	# yesno <question> [--timeout N] [--default X]
 	yesno $@
