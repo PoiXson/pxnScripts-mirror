@@ -59,7 +59,7 @@ function yesno() {
 	while [ $# -gt 0 ]; do
 		case "$1" in
 		--default)
-			shift
+			\shift
 			local t="$1"
 			if [ -z $t ]; then
 				failure "Missing --default value."
@@ -73,10 +73,10 @@ function yesno() {
 				failure "Illegal default answer: ${default}"
 				return "$NO"
 			fi
-			shift
+			\shift
 		;;
 		--timeout)
-			shift
+			\shift
 			local timeout="$1"
 			if [ -z $timeout ]; then
 				failure "Missing --timeout value."
@@ -90,7 +90,7 @@ function yesno() {
 					return "$default"
 				fi
 			fi
-			shift
+			\shift
 		;;
 		-h|--help)
 			DisplayHelp
@@ -98,7 +98,7 @@ function yesno() {
 		;;
 		-*)
 			failure "Unrecognized option: $1"
-			shift
+			\shift
 			if [ -z $default ]; then
 				return "$NO"
 			else
@@ -107,17 +107,13 @@ function yesno() {
 		;;
 		*)
 			local question="${question}${1} "
-			shift
+			\shift
 		;;
 		esac
 	done
 	if [[ $timeout -gt 0 ]] && [[ -z $default ]]; then
 		failure "Using --timeout requires a --default answer."
-		if [ -z $default ]; then
-			return "$NO"
-		else
-			return "$default"
-		fi
+		return "$NO"
 	fi
 	local options=""
 	if [ "$default" == "$YES" ]; then
