@@ -11,10 +11,15 @@ Packager : PoiXson <support@poixson.com>
 URL      : https://poixson.com/
 
 Requires : bash, screen, wget, curl, rsync, zip, unzip, grep
-Requires : pxnaliases, pingssh
+Requires : pxnaliases
 Obsoletes: shellscripts
 
 
+
+%package -n pxn-tools
+Summary  : Common useful tools.
+Requires : pxnscripts, pxnaliases, pingssh
+Requires : trash-cli, ncdu, tldr
 
 %package -n pxnaliases
 Summary : Helpful aliases for common shell commands.
@@ -30,6 +35,9 @@ Requires : pxnscripts, screen
 
 %description
 A collection of commonly used shell scripts for CentOS and Fedora.
+
+%description -n pxn-tools
+Common useful tools.
 
 %description -n pxnaliases
 Helpful aliases for common shell commands.
@@ -101,6 +109,8 @@ echo "Install.."
 %{_bindir}/timestamp
 %{_bindir}/yesno
 %{_sysconfdir}/profile.d/pxnscripts.sh
+
+%files -n pxn-tools
 
 %files -n pxnaliases
 %defattr(0555, root, root, 0755)
