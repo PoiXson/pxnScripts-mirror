@@ -22,6 +22,10 @@ Summary : Helpful aliases for common shell commands.
 %package -n pingssh
 Summary : Pings a remote host until it's able to connect with ssh.
 
+%package -n screen-service
+Summary : Screen as a systemd service.
+Requires : pxnscripts, screen
+
 
 
 %description
@@ -32,6 +36,9 @@ Helpful aliases for common shell commands.
 
 %description -n pingssh
 Pings a remote host until it's able to connect with ssh.
+
+%description -n screen-service
+Screen as a systemd service.
 
 
 
@@ -44,6 +51,7 @@ echo "Install.."
 %{__install} -d -m 0755  \
 	"%{buildroot}%{prefix}/"                 \
 	"%{buildroot}%{_sysconfdir}/profile.d/"  \
+	"%{buildroot}%{_sysconfdir}/screen-service/"  \
 		|| exit 1
 
 # /usr/bin/
@@ -56,6 +64,14 @@ echo "Install.."
 %{__install} -m 0644  "%{_topdir}/../src/yesno.sh"      "%{buildroot}%{_bindir}/yesno"      || exit 1
 %{__install} -m 0644  "%{_topdir}/../src/pingssh.sh"    "%{buildroot}%{_bindir}/pingssh"    || exit 1
 %{__install} -m 0644  "%{_topdir}/../src/sshkeygen.sh"  "%{buildroot}%{_bindir}/sshkeygen"  || exit 1
+%{__install} -m 0644  "%{_topdir}/../src/screen-service.sh"  "%{buildroot}%{_bindir}/screen-service"  || exit 1
+# /etc/screen-service/
+%{__install} -m 0644  \
+	"%{_topdir}/../src/screen-service-minecraft.sh"  \
+	"%{buildroot}%{_sysconfdir}/screen-service/minecraft.sh"  || exit 1
+%{__install} -m 0644  \
+	"%{_topdir}/../src/screen-service.conf.example"  \
+	"%{buildroot}%{_sysconfdir}/screen-service/service.conf.example"  || exit 1
 # /usr/bin/pxn/scripts/
 %{__install} -m 0644  \
 	"%{_topdir}/../src/common.sh"   \
@@ -96,3 +112,9 @@ echo "Install.."
 %{_bindir}/pingssh
 %{_bindir}/sshkeygen
 %{_sysconfdir}/profile.d/pingssh.sh
+
+%files -n screen-service
+%defattr(0555, root, root, 0755)
+%{_bindir}/screen-service
+%{_sysconfdir}/screen-service/minecraft.sh
+%{_sysconfdir}/screen-service/service.conf.example
