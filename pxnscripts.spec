@@ -88,9 +88,15 @@ echo "Install.."
 	"%{_topdir}/../src/defines.sh"  \
 		"%{buildroot}%{prefix}/"  || exit 1
 # /etc/profile.d/
-%{__install} -m 0644  "%{_topdir}/../src/etc-profile.d-pxnscripts.sh"  "%{buildroot}%{_sysconfdir}/profile.d/pxnscripts.sh"  || exit 1
-%{__install} -m 0644  "%{_topdir}/../src/etc-profile.d-pxnaliases.sh"  "%{buildroot}%{_sysconfdir}/profile.d/pxnaliases.sh"  || exit 1
-%{__install} -m 0644  "%{_topdir}/../src/etc-profile.d-pingssh.sh"     "%{buildroot}%{_sysconfdir}/profile.d/pingssh.sh"     || exit 1
+%{__install} -m 0644  \
+	"%{_topdir}/../src/etc-profile.d-pxnscripts.sh"  \
+	"%{buildroot}%{_sysconfdir}/profile.d/pxnscripts.sh"  || exit 1
+%{__install} -m 0644  \
+	"%{_topdir}/../src/etc-profile.d-pxnaliases.sh"  \
+	"%{buildroot}%{_sysconfdir}/profile.d/pxnaliases.sh"  || exit 1
+%{__install} -m 0644  \
+	"%{_topdir}/../src/etc-profile.d-pingssh.sh"  \
+	"%{buildroot}%{_sysconfdir}/profile.d/pingssh.sh"     || exit 1
 
 
 
