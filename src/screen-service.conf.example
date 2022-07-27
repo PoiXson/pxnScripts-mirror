@@ -1,5 +1,0 @@
-
-MC_USER="mc"
-MC_DIR="spigot"
-
-source  /etc/screen-service/minecraft.sh  || exit 1
