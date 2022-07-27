@@ -225,3 +225,14 @@ function is_locked() {
 	LOCK_COUNT=`lsof -t "${LOCK_FILE}" | wc -l`
 	return $LOCK_COUNT
 }
+
+
+
+function find_screen() {
+	LIST=$( \screen -list | \grep -o "^\s*[0-9]*\.test\s" )
+	[[ -z $LIST ]] && return
+	RESULT=""
+	for ENTRY in $LIST; do
+		echo ${ENTRY%%.*}
+	done
+}
