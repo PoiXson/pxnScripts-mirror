@@ -40,6 +40,7 @@ coverage/
 rpmbuild/
 out/
 build/
+build-phar/
 Makefile
 Makefile.fragments
 Makefile.objects
