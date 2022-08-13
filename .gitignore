@@ -11,6 +11,7 @@ DEBUG
 .htdb*
 config.php
 public/static/bootstrap
+public/static/bootstrap-icons
 public/static/jquery
 public/static/bootswatch
 data/
