@@ -1,6 +1,14 @@
 shellscripts - Collection of commonly used shell scripts
 
 
+2022-08-24 - 2.1.17
+===================
+* added new pxn-tools package
+* removed j alias and added autojump to pxn-tools package
+* replaced iotop with iotop-c
+* added find_screen() function in common.sh
+
+
 2022-06-30 - 2.1.11
 ===================
 * added a new animation to pingssh script
