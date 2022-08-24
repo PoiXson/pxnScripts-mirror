@@ -1,6 +1,11 @@
 shellscripts - Collection of commonly used shell scripts
 
 
+2022-08-24 - 2.1.18
+===================
+* fixed colordiff dependency in pxn-tools package
+
+
 2022-08-24 - 2.1.17
 ===================
 * added new pxn-tools package
