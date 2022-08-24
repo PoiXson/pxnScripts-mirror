@@ -19,7 +19,7 @@ Obsoletes: shellscripts
 %package -n pxn-tools
 Summary  : Common useful tools.
 Requires : pxnscripts, pxnaliases, pingssh
-Requires : trash-cli, ncdu, tldr, fd-find, color-diff
+Requires : trash-cli, ncdu, tldr, fd-find, colordiff
 Requires : htop, nmon, iotop-c, autojump
 
 %package -n pxnaliases
