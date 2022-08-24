@@ -7,3 +7,5 @@
 if [ -e /usr/bin/pxn/scripts/aliases.sh ]; then
 	source /usr/bin/pxn/scripts/aliases.sh
 fi
+
+export HISTCONTROL=ignoreboth
