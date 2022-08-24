@@ -19,8 +19,9 @@ Obsoletes: shellscripts
 %package -n pxn-tools
 Summary  : Common useful tools.
 Requires : pxnscripts, pxnaliases, pingssh
-Requires : trash-cli, ncdu, tldr, fd-find, colordiff
+Requires : trash-cli, ncdu, tldr, colordiff
 Requires : htop, nmon, iotop-c, autojump
+#TODO: fd-find (not available on centos)
 
 %package -n pxnaliases
 Summary : Helpful aliases for common shell commands.
