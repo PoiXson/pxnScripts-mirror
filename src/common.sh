@@ -229,7 +229,7 @@ function is_locked() {
 
 
 function find_screen() {
-	LIST=$( \screen -list | \grep -o "^\s*[0-9]*\.test\s" )
+	LIST=$( \screen -list | \grep -o "^\s*[0-9]*\.$1\s" )
 	[[ -z $LIST ]] && return
 	RESULT=""
 	for ENTRY in $LIST; do
