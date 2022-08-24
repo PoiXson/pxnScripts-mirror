@@ -100,6 +100,12 @@ alias wtime='watch -n0.2 date'
 alias wip='watch "ip addr | grep inet | sort"'
 
 
+# iotop
+if [[ -e /usr/sbin/iotop-c ]]; then
+	alias iotop='iotop-c'
+fi
+
+
 # memory
 alias memtop='watch -d "free -m;echo;ps aux --sort -rss | head -11"'
 alias syncmem='\sudo -s -- sh -c "sync && echo 3 > /proc/sys/vm/drop_caches"'
@@ -150,6 +156,8 @@ alias nmon='echo -n "cd" | nmon'
 alias wttr='clear;\curl wttr.in'
 alias calce='clear ; calc ; exit'
 #alias httpw='watch -d -n1 /usr/bin/lynx -dump -width 500 http://127.0.0.1/whm-server-status'
+
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 
 # ffmpeg
