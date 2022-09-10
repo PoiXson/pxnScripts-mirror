@@ -1,6 +1,11 @@
 shellscripts - Collection of commonly used shell scripts
 
 
+2022-09-10 - 2.1.21
+===================
+* changing license from GPL3 to AGPL3
+
+
 2022-08-24 - 2.1.20
 ===================
 * added new pxn-tools package
