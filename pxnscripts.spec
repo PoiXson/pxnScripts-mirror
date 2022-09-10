@@ -6,7 +6,7 @@ BuildArch : noarch
 Prefix: %{_bindir}/pxn/scripts
 %define _rpmfilename  %%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm
 
-License  : GPLv3
+License  : AGPLv3
 Packager : PoiXson <support@poixson.com>
 URL      : https://poixson.com/
 
