@@ -20,7 +20,7 @@ Obsoletes: shellscripts
 Summary  : Common useful tools.
 Requires : pxnscripts, pxnaliases, pingssh
 Requires : trash-cli, ncdu, tldr, colordiff
-Requires : htop, nmon, iotop-c, autojump
+Requires : htop, nmon, iotop-c, autojump, tree, htop, nmon
 #TODO: fd-find (not available on centos)
 
 %package -n pxnaliases
