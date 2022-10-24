@@ -13,6 +13,7 @@ URL      : https://poixson.com/
 Requires : bash, screen, wget, curl, rsync, zip, unzip, grep
 Requires : pxn-aliases
 Provides : pxnscripts
+Obsoletes: pxnscripts
 Obsoletes: shellscripts
 
 
@@ -27,6 +28,7 @@ Provides : pxntools
 %package -n pxn-aliases
 Summary  : Helpful aliases for common shell commands.
 Provides : pxnaliases
+Obsoletes: pxnaliases
 
 %package -n pingssh
 Summary  : Pings a remote host until it's able to connect with ssh.
