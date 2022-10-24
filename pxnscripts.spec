@@ -1,4 +1,4 @@
-Name    : pxnscripts
+Name    : pxn-scripts
 Summary : A collection of commonly used shell scripts
 Version : 2.1.%{?build_number}%{!?build_number:x}
 Release : 1
@@ -11,7 +11,8 @@ Packager : PoiXson <support@poixson.com>
 URL      : https://poixson.com/
 
 Requires : bash, screen, wget, curl, rsync, zip, unzip, grep
-Requires : pxnaliases
+Requires : pxn-aliases
+Provides : pxnscripts
 Obsoletes: shellscripts
 
 
@@ -20,14 +21,17 @@ Obsoletes: shellscripts
 Summary  : Common useful tools.
 Requires : pxnscripts, pxnaliases, pingssh
 Requires : trash-cli, ncdu, tldr, colordiff
-Requires : htop, nmon, iotop-c, autojump, tree, htop, nmon
-#TODO: fd-find (not available on centos)
+Requires : htop, nmon, iotop-c, autojump, tree, htop, nmon, hexedit
+Provides : pxntools
 
-%package -n pxnaliases
-Summary : Helpful aliases for common shell commands.
+%package -n pxn-aliases
+Summary  : Helpful aliases for common shell commands.
+Provides : pxnaliases
 
 %package -n pingssh
-Summary : Pings a remote host until it's able to connect with ssh.
+Summary  : Pings a remote host until it's able to connect with ssh.
+Provides : ping-ssh
+Provides : pssh
 
 
 
@@ -37,7 +41,7 @@ A collection of commonly used shell scripts for CentOS and Fedora.
 %description -n pxn-tools
 Common useful tools.
 
-%description -n pxnaliases
+%description -n pxn-aliases
 Helpful aliases for common shell commands.
 
 %description -n pingssh
@@ -104,7 +108,7 @@ echo "Install.."
 
 %files -n pxn-tools
 
-%files -n pxnaliases
+%files -n pxn-aliases
 %defattr(0555, root, root, 0755)
 %{prefix}/aliases.sh
 %{_sysconfdir}/profile.d/pxnaliases.sh
