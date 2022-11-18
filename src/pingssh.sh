@@ -170,13 +170,13 @@ while true; do
 	if [[ $PING_RESULT -eq 0 ]]; then
 		echo " :) "
 		echo
-		if ssh "${1}" ; then
+		if ssh -o ConnectTimeout=1 "${1}" ; then
 			echo
 			break
 		fi
 		echo
 		sleep 1
 	fi
-	sleep 0.1
+	sleep 0.2
 
 done
