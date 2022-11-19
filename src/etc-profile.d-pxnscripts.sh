@@ -9,10 +9,14 @@ fi
 
 
 # screen
-if [[ ! -e "/home/$USER/.local/" ]]; then
-	\install  -m 0755  -d "/home/$USER/.local/"  || exit 1
+if [[ $EUID -ne 0 ]]; then
+	if [[ -e "/home/$USER/" ]]; then
+		if [[ ! -e "/home/$USER/.local/" ]]; then
+			\install  -m 0755  -d "/home/$USER/.local/"  || exit 1
+		fi
+		if [[ ! -e "/home/$USER/.local/screen/" ]]; then
+			\install  -m 0700  -d "/home/$USER/.local/screen/"  || exit 1
+		fi
+		export SCREENDIR=/home/$USER/.local/screen
+	fi
 fi
-if [[ ! -e "/home/$USER/.local/screen/" ]]; then
-	\install  -m 0700  -d "/home/$USER/.local/screen/"  || exit 1
-fi
-export SCREENDIR=/home/$USER/.local/screen
