@@ -96,6 +96,17 @@ function failure() {
 
 
 
+function echo_cmd() {
+	local N=""
+	if [[ "$1" == "-n" ]]; then
+		N="-n"
+		\shift
+	fi
+	echo $N -e " ${COLOR_GREEN}>${COLOR_RESET} ${COLOR_CYAN}$@${COLOR_RESET}"
+}
+
+
+
 function title() {
 	# format
 	case "$1" in
