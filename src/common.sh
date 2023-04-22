@@ -102,7 +102,15 @@ function echo_cmd() {
 		N="-n"
 		\shift
 	fi
-	echo $N -e " ${COLOR_GREEN}>${COLOR_RESET} ${COLOR_CYAN}$@${COLOR_RESET}"
+	local IS_FIRST=$YES
+	for LINE in "${@}"; do
+		if [[ $IS_FIRST -eq $YES ]]; then
+			IS_FIRST=$NO
+			echo $N -e " ${COLOR_GREEN}>${COLOR_RESET} ${COLOR_CYAN}$LINE${COLOR_RESET}"
+		else
+			echo $N -e "     ${COLOR_CYAN}$LINE${COLOR_RESET}"
+		fi
+	done
 }
 
 
