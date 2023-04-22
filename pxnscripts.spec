@@ -10,8 +10,8 @@ License  : AGPLv3
 Packager : PoiXson <support@poixson.com>
 URL      : https://poixson.com/
 
-Requires : bash, screen, wget, curl, rsync, zip, unzip, grep
-Requires : pxn-aliases
+Requires : bash, wget, curl, rsync, zip, unzip, grep
+Recommends: pxn-aliases, screen
 Provides : pxnscripts
 Obsoletes: pxnscripts
 Obsoletes: shellscripts
