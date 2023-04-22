@@ -20,7 +20,7 @@ Obsoletes: shellscripts
 
 %package -n pxn-tools
 Summary  : Common useful tools.
-Requires : pxnscripts, pxnaliases, pingssh, calc
+Requires : pxn-scripts, pxn-aliases, pingssh, calc
 Requires : trash-cli, ncdu, tldr, colordiff, inotify-tools
 Requires : htop, nmon, iotop-c, autojump, tree, htop, nmon, hexedit
 Provides : pxntools
