@@ -62,33 +62,31 @@ echo "Install.."
 	"%{buildroot}%{_sysconfdir}/profile.d/"  \
 		|| exit 1
 
-# /usr/bin/
-%{__install} -m 0644  "%{_topdir}/../src/chmodr.sh"     "%{buildroot}%{_bindir}/chmodr"     || exit 1
-%{__install} -m 0644  "%{_topdir}/../src/chownr.sh"     "%{buildroot}%{_bindir}/chownr"     || exit 1
-%{__install} -m 0644  "%{_topdir}/../src/ethtop.sh"     "%{buildroot}%{_bindir}/ethtop"     || exit 1
-%{__install} -m 0644  "%{_topdir}/../src/mklinkrel.sh"  "%{buildroot}%{_bindir}/mklinkrel"  || exit 1
-%{__install} -m 0644  "%{_topdir}/../src/monhost.sh"    "%{buildroot}%{_bindir}/monhost"    || exit 1
-%{__install} -m 0644  "%{_topdir}/../src/timestamp.sh"  "%{buildroot}%{_bindir}/timestamp"  || exit 1
-%{__install} -m 0644  "%{_topdir}/../src/yesno.sh"      "%{buildroot}%{_bindir}/yesno"      || exit 1
-%{__install} -m 0644  "%{_topdir}/../src/pingssh.sh"    "%{buildroot}%{_bindir}/pingssh"    || exit 1
-%{__install} -m 0644  "%{_topdir}/../src/sshkeygen.sh"  "%{buildroot}%{_bindir}/sshkeygen"  || exit 1
-# /usr/bin/pxn/scripts/
-%{__install} -m 0644  \
-	"%{_topdir}/../src/common.sh"   \
-	"%{_topdir}/../src/aliases.sh"  \
-	"%{_topdir}/../src/colors.sh"   \
-	"%{_topdir}/../src/defines.sh"  \
-		"%{buildroot}%{prefix}/"  || exit 1
+\pushd  "%{_topdir}/../src/"  >/dev/null  || exit 1
+	# /usr/bin/
+	%{__install} -m 0644  "chmodr.sh"     "%{buildroot}%{_bindir}/chmodr"     || exit 1
+	%{__install} -m 0644  "chownr.sh"     "%{buildroot}%{_bindir}/chownr"     || exit 1
+	%{__install} -m 0644  "ethtop.sh"     "%{buildroot}%{_bindir}/ethtop"     || exit 1
+	%{__install} -m 0644  "mklinkrel.sh"  "%{buildroot}%{_bindir}/mklinkrel"  || exit 1
+	%{__install} -m 0644  "monhost.sh"    "%{buildroot}%{_bindir}/monhost"    || exit 1
+	%{__install} -m 0644  "timestamp.sh"  "%{buildroot}%{_bindir}/timestamp"  || exit 1
+	%{__install} -m 0644  "yesno.sh"      "%{buildroot}%{_bindir}/yesno"      || exit 1
+	%{__install} -m 0644  "pingssh.sh"    "%{buildroot}%{_bindir}/pingssh"    || exit 1
+	%{__install} -m 0644  "sshkeygen.sh"  "%{buildroot}%{_bindir}/sshkeygen"  || exit 1
+	# /usr/bin/pxn/scripts/
+	%{__install} -m 0644  \
+		"common.sh"   \
+		"aliases.sh"  \
+		"colors.sh"   \
+		"defines.sh"  \
+			"%{buildroot}%{prefix}/"  || exit 1
+\popd  >/dev/null
 # /etc/profile.d/
-%{__install} -m 0644  \
-	"%{_topdir}/../src/etc-profile.d-pxnscripts.sh"  \
-	"%{buildroot}%{_sysconfdir}/profile.d/pxnscripts.sh"  || exit 1
-%{__install} -m 0644  \
-	"%{_topdir}/../src/etc-profile.d-pxnaliases.sh"  \
-	"%{buildroot}%{_sysconfdir}/profile.d/pxnaliases.sh"  || exit 1
-%{__install} -m 0644  \
-	"%{_topdir}/../src/etc-profile.d-pingssh.sh"  \
-	"%{buildroot}%{_sysconfdir}/profile.d/pingssh.sh"     || exit 1
+\pushd  "%{_topdir}/../src/profile.d/"  >/dev/null  || exit 1
+	%{__install} -m 0644  "pxn-scripts.sh"  "%{buildroot}%{_sysconfdir}/profile.d/pxnscripts.sh"  || exit 1
+	%{__install} -m 0644  "pxn-aliases.sh"  "%{buildroot}%{_sysconfdir}/profile.d/pxnaliases.sh"  || exit 1
+	%{__install} -m 0644  "pingssh.sh"      "%{buildroot}%{_sysconfdir}/profile.d/pingssh.sh"     || exit 1
+\popd  >/dev/null
 
 
 
