@@ -20,3 +20,10 @@ if [[ $EUID -ne 0 ]]; then
 		export SCREENDIR=/home/$USER/.local/screen
 	fi
 fi
+
+
+
+# java
+if [[ -e /usr/lib/jvm/jre-openjdk/ ]]; then
+	export JAVA_HOME="/usr/lib/jvm/jre-openjdk"
+fi
