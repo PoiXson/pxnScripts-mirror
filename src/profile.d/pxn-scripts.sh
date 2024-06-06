@@ -25,5 +25,5 @@ fi
 
 # java
 if [[ -e /usr/lib/jvm/jre-openjdk/ ]]; then
-	export JAVA_HOME="/usr/lib/jvm/jre-openjdk"
+	export JAVA_HOME="/usr/lib/jvm/java-latest"
 fi
