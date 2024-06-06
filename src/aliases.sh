@@ -134,6 +134,7 @@ alias screenc='screen -mS'
 
 
 # yum aliases
+alias yumrepo='yum --disablerepo="*" --enablerepo='
 alias yumy='yum -y'
 alias yumup='yum clean all && clear && yum update'
 alias yumupy='yumup -y'
