@@ -241,3 +241,8 @@ if [[ -e /usr/bin/yesno ]]; then
 	alias reboot='echo ; hostname ; ip addr show | grep --color=never "inet " | grep -v "127.0.0.1" | awk '"'"'{print $2}'"'"' ; echo ; w ; yesno "Reboot?"   --timeout 10 --default n && shutdown -r now'
 	alias stop='echo ; hostname ; ip addr show | grep --color=never "inet " | grep -v "127.0.0.1" | awk '"'"'{print $2}'"'"' ; echo ; w ; yesno "Shutdown?" --timeout 10 --default n && shutdown -h now'
 fi
+
+
+if [[ -e /usr/bin/youtube-dl ]]; then
+	alias youtube-dl-mp4='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"'
+fi
