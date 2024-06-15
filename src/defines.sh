@@ -28,50 +28,50 @@ export NO=1
 
 
 function enable_colors() {
-	COLOR_BLACK='\e[0;30m'
-	COLOR_BLUE='\e[0;34m'
-	COLOR_GREEN='\e[0;32m'
-	COLOR_CYAN='\e[0;36m'
-	COLOR_RED='\e[0;31m'
-	COLOR_PURPLE='\e[0;35m'
-	COLOR_BROWN='\e[0;33m'
-	COLOR_LIGHTGRAY='\e[0;37m'
-	COLOR_DARKGRAY='\e[1;30m'
-	COLOR_LIGHTBLUE='\e[1;34m'
-	COLOR_LIGHTGREEN='\e[1;32m'
-	COLOR_LIGHTCYAN='\e[1;36m'
-	COLOR_LIGHTRED='\e[1;31m'
-	COLOR_LIGHTPURPLE='\e[1;35m'
-	COLOR_YELLOW='\e[1;33m'
-	COLOR_WHITE='\e[1;37m'
-	COLOR_RESET='\e[0m'
+	export COLOR_BLACK='\e[0;30m'
+	export COLOR_BLUE='\e[0;34m'
+	export COLOR_GREEN='\e[0;32m'
+	export COLOR_CYAN='\e[0;36m'
+	export COLOR_RED='\e[0;31m'
+	export COLOR_PURPLE='\e[0;35m'
+	export COLOR_BROWN='\e[0;33m'
+	export COLOR_LIGHTGRAY='\e[0;37m'
+	export COLOR_DARKGRAY='\e[1;30m'
+	export COLOR_LIGHTBLUE='\e[1;34m'
+	export COLOR_LIGHTGREEN='\e[1;32m'
+	export COLOR_LIGHTCYAN='\e[1;36m'
+	export COLOR_LIGHTRED='\e[1;31m'
+	export COLOR_LIGHTPURPLE='\e[1;35m'
+	export COLOR_YELLOW='\e[1;33m'
+	export COLOR_WHITE='\e[1;37m'
+	export COLOR_RESET='\e[0m'
 }
 function disable_colors() {
-	COLOR_BLACK=''
-	COLOR_BLUE=''
-	COLOR_GREEN=''
-	COLOR_CYAN=''
-	COLOR_RED=''
-	COLOR_PURPLE=''
-	COLOR_BROWN=''
-	COLOR_LIGHTGRAY=''
-	COLOR_DARKGRAY=''
-	COLOR_LIGHTBLUE=''
-	COLOR_LIGHTGREEN=''
-	COLOR_LIGHTCYAN=''
-	COLOR_LIGHTRED=''
-	COLOR_LIGHTPURPLE=''
-	COLOR_YELLOW=''
-	COLOR_WHITE=''
-	COLOR_RESET=''
+	export COLOR_BLACK=''
+	export COLOR_BLUE=''
+	export COLOR_GREEN=''
+	export COLOR_CYAN=''
+	export COLOR_RED=''
+	export COLOR_PURPLE=''
+	export COLOR_BROWN=''
+	export COLOR_LIGHTGRAY=''
+	export COLOR_DARKGRAY=''
+	export COLOR_LIGHTBLUE=''
+	export COLOR_LIGHTGREEN=''
+	export COLOR_LIGHTCYAN=''
+	export COLOR_LIGHTRED=''
+	export COLOR_LIGHTPURPLE=''
+	export COLOR_YELLOW=''
+	export COLOR_WHITE=''
+	export COLOR_RESET=''
 }
 
 
 
 if [[ -z $NO_COLORS ]] || [[ $NO_COLORS -ne $YES ]]; then
-	NUM_COLORS=$( tput colors 2>/dev/null )
+	export NUM_COLORS=$( tput colors 2>/dev/null )
 else
-	NUM_COLORS=0
+	export NUM_COLORS=0
 fi
 if [[ $NUM_COLORS == ?(-)+([0-9]) ]] \
 && [[ $NUM_COLORS -ge 8 ]]; then
