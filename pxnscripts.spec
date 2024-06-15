@@ -90,11 +90,13 @@ echo "Install.."
 
 
 
-%pre
-if [[ ! -e /usr/lib/jvm/java-latest ]]; then
-	\pushd "/usr/lib/jvm/"  >/dev/null  || exit 1
-		\ln -svf  /etc/alternatives/jre  java-latest  || exit 1
-	\popd  >/dev/null
+%post
+if [[ -e "/usr/lib/jvm/" ]]; then
+	if [[ ! -e "/usr/lib/jvm/java-latest" ]]; then
+		\pushd  "/usr/lib/jvm/"  >/dev/null  || exit 1
+			\ln -svf  /etc/alternatives/jre  java-latest  || exit 1
+		\popd  >/dev/null
+	fi
 fi
 
 
