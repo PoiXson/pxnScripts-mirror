@@ -7,3 +7,4 @@
 Backup "name"
 	Host "host"
 	Port 22
+#	Exclude "/ignore/these/files"
