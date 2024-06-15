@@ -37,6 +37,7 @@ function DisplayHelp() {
 	echo -e "${COLOR_BROWN}Options:${COLOR_RESET}"
 	echo -e "  ${COLOR_GREEN}--a, --all${COLOR_RESET}                Perform a backup for all configured hosts"
 	echo -e "  ${COLOR_GREEN}-n, --name${COLOR_RESET}                Perform a backup for this configured host"
+	echo -e "  ${COLOR_GREEN}-D, --dry${COLOR_RESET}                 Perform a trial run without making any changes"
 	echo
 	echo -e "  ${COLOR_GREEN}-q, --quiet${COLOR_RESET}               Hide extra logs"
 	echo -e "  ${COLOR_GREEN}--colors${COLOR_RESET}                  Enable console colors"
@@ -61,6 +62,7 @@ function DisplayVersion() {
 
 
 DO_ALL=$NO
+IS_DRY=$NO
 BACKUP_FILTERS=""
 BACKUP_FILTERS_FOUND=""
 VERBOSE=$NO
@@ -164,14 +166,17 @@ function doBackup() {
 	fi
 	# perform backup
 	COUNT_ACT=$((COUNT_ACT+1))
-	local VERBOSE_QUIET=""
+	local RSYNC_ARGS=""
+	if [[ $IS_DRY -eq $YES ]]; then
+		RSYNC_ARGS="$RSYNC_ARGS --dry-run"
+	fi
 	if [[ $VERBOSE -eq $YES ]]; then
-		VERBOSE_QUIET="-v"
+		RSYNC_ARGS="$RSYNC_ARGS --verbose"
 	elif [[ $QUIET -eq $YES ]]; then
-		VERBOSE_QUIET="-q"
+		RSYNC_ARGS="$RSYNC_ARGS --quiet"
 	fi
 	rsync -Fyth --progress --partial --archive --delete-delay --delete-excluded \
-		$VERBOSE_QUIET                  \
+		$RSYNC_ARGS                     \
 		--exclude "$PATH_BACKUPS"       \
 		--exclude "/bin"                \
 		--exclude "/boot"               \
@@ -260,6 +265,10 @@ while [ $# -gt 0 ]; do
 			failure ; DisplayHelp $NO ; exit 1
 		fi
 		BACKUP_FILTERS="$BACKUP_FILTERS $NAME"
+	;;
+
+	--dry|--dry-run)
+		IS_DRY=$YES
 	;;
 
 	-v|--verbose) VERBOSE=$YES ;;
