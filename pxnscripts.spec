@@ -62,6 +62,7 @@ echo "Install.."
 	"%{buildroot}%{_sysconfdir}/profile.d/"  \
 		|| exit 1
 
+# scripts
 \pushd  "%{_topdir}/../src/"  >/dev/null  || exit 1
 	# /usr/bin/
 	%{__install} -m 0644  "chmodr.sh"     "%{buildroot}%{_bindir}/chmodr"     || exit 1
@@ -105,6 +106,7 @@ fi
 %files
 %defattr(0555, root, root, 0755)
 %dir %{prefix}/
+# scripts
 %{prefix}/common.sh
 %{prefix}/colors.sh
 %{prefix}/defines.sh
@@ -115,6 +117,7 @@ fi
 %{_bindir}/monhost
 %{_bindir}/timestamp
 %{_bindir}/yesno
+# profile.d
 %{_sysconfdir}/profile.d/pxnscripts.sh
 
 %files -n pxn-tools

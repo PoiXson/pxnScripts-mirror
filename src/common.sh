@@ -195,7 +195,7 @@ function sleepdotdot() {
 function progress_percent() {
 	let width=25
 	if [[ -z "$1" ]] || [[ -z "$2" ]]; then
-		echo 'Missing required argument!'
+		failure 'Missing required argument!'
 		exit 1
 	fi
 	TOTAL=$1
@@ -228,7 +228,7 @@ function get_lock() {
 		echo
 	done
 	echo
-	echo 'Timeout waiting for other instance to complete!'
+	failure "Timeout waiting for other instance to complete!"
 	echo
 	exit 1
 }
@@ -238,7 +238,7 @@ function is_locked() {
 		LOCK_FILE=`realpath "$0"`
 	fi
 	if [ -z $LOCK_FILE ]; then
-		echo 'Failed to detect lock file!'
+		failure "Failed to detect lock file!"
 		exit 1
 	fi
 	LOCK_COUNT=`lsof -t "${LOCK_FILE}" | wc -l`
