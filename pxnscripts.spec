@@ -90,6 +90,15 @@ echo "Install.."
 
 
 
+%pre
+if [[ ! -e /usr/lib/jvm/java-latest ]]; then
+	\pushd "/usr/lib/jvm/"  >/dev/null  || exit 1
+		\ln -svf  /etc/alternatives/jre  java-latest  || exit 1
+	\popd  >/dev/null
+fi
+
+
+
 ### Files ###
 %files
 %defattr(0555, root, root, 0755)
