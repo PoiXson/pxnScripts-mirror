@@ -22,7 +22,7 @@ Obsoletes: shellscripts
 Summary  : Common useful tools.
 Requires : pxn-scripts, pxn-aliases, pingssh, calc
 Requires : trash-cli, ncdu, tldr, colordiff, inotify-tools
-Requires : htop, nmon, iotop-c, autojump, tree, htop, nmon, hexedit
+Requires : htop, nmon, iotop-c, tree, htop, nmon, hexedit
 Provides : pxntools
 
 %package -n pxn-aliases
