@@ -1,0 +1,9 @@
+
+#export PATH_BACKUPS="/backups"
+
+
+#Backup  "name"  "host"  22
+
+Backup "name"
+	Host "host"
+	Port 22

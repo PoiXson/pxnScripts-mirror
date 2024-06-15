@@ -74,6 +74,7 @@ echo "Install.."
 	%{__install} -m 0644  "yesno.sh"      "%{buildroot}%{_bindir}/yesno"      || exit 1
 	%{__install} -m 0644  "pingssh.sh"    "%{buildroot}%{_bindir}/pingssh"    || exit 1
 	%{__install} -m 0644  "sshkeygen.sh"  "%{buildroot}%{_bindir}/sshkeygen"  || exit 1
+	%{__install} -m 0644  "pxnbackup.sh"  "%{buildroot}%{_bindir}/pxnbackup"  || exit 1
 	# /usr/bin/pxn/scripts/
 	%{__install} -m 0644  \
 		"common.sh"   \
@@ -82,6 +83,12 @@ echo "Install.."
 		"defines.sh"  \
 			"%{buildroot}%{prefix}/"  || exit 1
 \popd  >/dev/null
+
+# pxnbackups.conf
+\pushd  "%{_topdir}/../"  >/dev/null  || exit 1
+	%{__install} -m 0644  "pxnbackups.conf.example"  "%{buildroot}%{_sysconfdir}/"
+\popd  >/dev/null
+
 # /etc/profile.d/
 \pushd  "%{_topdir}/../src/profile.d/"  >/dev/null  || exit 1
 	%{__install} -m 0644  "pxn-scripts.sh"  "%{buildroot}%{_sysconfdir}/profile.d/pxnscripts.sh"  || exit 1
@@ -117,6 +124,9 @@ fi
 %{_bindir}/monhost
 %{_bindir}/timestamp
 %{_bindir}/yesno
+%{_bindir}/pxnbackup
+# pxnbackups.conf
+%attr(0600,-,-) %{_sysconfdir}/pxnbackups.conf.example
 # profile.d
 %{_sysconfdir}/profile.d/pxnscripts.sh
 

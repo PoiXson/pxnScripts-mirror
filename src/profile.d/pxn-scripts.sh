@@ -27,3 +27,7 @@ fi
 if [[ -e /usr/lib/jvm/jre-openjdk/ ]]; then
 	export JAVA_HOME="/usr/lib/jvm/java-latest"
 fi
+
+
+
+alias pxnbackup='clear;pxnbackup'
