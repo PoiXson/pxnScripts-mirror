@@ -166,12 +166,6 @@ function doBackup() {
 	fi
 	echo
 	title B "Backup: $BACKUP_NAME"
-	# syncmem
-	if [[ "$BACKUP_HOST" = "/"* ]]; then
-		sudo sh -c  'sync; echo 3>/proc/sys/vm/drop_caches  2>/dev/null'
-	else
-		\ssh  $BACKUP_HOST sh -c  '\sync ; echo 3>/proc/sys/vm/drop_caches  2>/dev/null'
-	fi
 	# perform backup
 	COUNT_ACT=$((COUNT_ACT+1))
 	local RSYNC_ARGS=""
