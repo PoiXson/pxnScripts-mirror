@@ -1,11 +1,11 @@
 
-#export PATH_BACKUPS="/backups"
+#PATH_BACKUPS="/backups"
 
 
 #Backup  "name"  "host"  22
 
-Backup "name"
-	Host "host"
-	Port 22
+#Backup "name"
+#	Host "host"
+#	Port 22
 #	Source "/home"
 #	Exclude "/ignore/these/files"
