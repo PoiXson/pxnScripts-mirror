@@ -111,7 +111,7 @@ function Host() {
 }
 function Port() {
 	if [[ ! -z $1 ]]; then
-		BACKUP_Port=$1
+		BACKUP_PORT=$(($1))
 	fi
 }
 function Source() {
@@ -156,26 +156,29 @@ function doBackup() {
 	BACKUP_FILTERS_FOUND="$BACKUP_FILTERS_FOUND $BACKUP_NAME"
 	if [[ ! -z $BACKUP_FILTERS ]]; then
 		if [[ " $BACKUP_FILTERS " != *" $BACKUP_NAME "* ]]; then
-			notice "Skipping filtered: $BACKUP_NAME"
+			[[ $VERBOSE -eq $YES ]] && notice "Skipping filtered: $BACKUP_NAME"
 			CleanupBackupVars
 			return
 		fi
 	fi
-	if [[ -z $BACKUP_PORT ]]; then
-		BACKUP_PORT=22
-	fi
 	echo
 	title B "Backup: $BACKUP_NAME"
+	echo
 	# perform backup
 	COUNT_ACT=$((COUNT_ACT+1))
-	local RSYNC_ARGS=""
+	local RSYNC_ARGS=()
 	if [[ $IS_DRY -eq $YES ]]; then
-		RSYNC_ARGS="$RSYNC_ARGS --dry-run"
+		RSYNC_ARGS+=("--dry-run")
 	fi
 	if [[ $VERBOSE -eq $YES ]]; then
-		RSYNC_ARGS="$RSYNC_ARGS --verbose"
+		RSYNC_ARGS+=("--verbose")
 	elif [[ $QUIET -eq $YES ]]; then
-		RSYNC_ARGS="$RSYNC_ARGS --quiet"
+		RSYNC_ARGS+=("--quiet")
+	fi
+	BACKUP_PORT=$((BACKUP_PORT))
+	if [[ $BACKUP_PORT -eq 0 ]]; then
+		BACKUP_PORT=22
+	fi
 	if [[ -z $BACKUP_SOURCE ]]; then
 		BACKUP_SOURCE="/"
 	fi
@@ -184,9 +187,20 @@ function doBackup() {
 	else
 		RSYNC_ARGS+=("${BACKUP_HOST}:${BACKUP_SOURCE}")
 	fi
-	rsync -Fyth --progress --partial --archive --delete-delay --delete-excluded \
-		$RSYNC_ARGS                     \
-		$BACKUP_EXCLUDES                \
+	echo_cmd "rsync -Fyth --progress --partial --archive --delete-delay --delete-excluded"
+	echo_cmd "  --rsh \"ssh -p$((BACKUP_PORT))\""
+	for EXCLUDE in "${BACKUP_EXCLUDES[@]}"; do
+		echo_cmd " $EXCLUDE"
+	done
+	echo_cmd "  --exclude ..."
+	echo_cmd "  --exclude \"$PATH_BACKUPS\""
+	for LINE in "${RSYNC_ARGS[@]}"; do
+		echo_cmd "  $LINE"
+	done
+	echo_cmd "  $PATH_BACKUPS/$BACKUP_NAME/"
+	echo
+	\rsync -Fyth --progress --partial --archive --delete-delay --delete-excluded  \
+		--rsh "ssh -p$((BACKUP_PORT))"  \
 		${BACKUP_EXCLUDES[@]}           \
 		--exclude "/bin"                \
 		--exclude "/boot"               \
@@ -213,8 +227,8 @@ function doBackup() {
 		--exclude "/backups"            \
 		--exclude "*/.composer"         \
 		--exclude "*/.m2"               \
-		--exclude "*/*.swap"            \
-		--exclude "*/.cache"            \
+		--exclude "*.swap"              \
+		--exclude "*.cache"             \
 		--exclude "*/Trash/"            \
 		--exclude "*/.Trash*/"          \
 		--exclude "*/lost+found"        \
@@ -222,7 +236,8 @@ function doBackup() {
 		--exclude "*/.rustup"           \
 		--exclude "*/.gradle"           \
 		--exclude "/home/*/Downloads"   \
-		"$BACKUP_HOST"  "$PATH_BACKUPS/$BACKUP_NAME/"  "$@"  || exit 1
+		--exclude "$PATH_BACKUPS"       \
+		"${RSYNC_ARGS[@]}"  "$PATH_BACKUPS/$BACKUP_NAME/"  || exit 1
 	echo
 	# backup finished
 	DisplayTimeBackup "$BACKUP_NAME"
@@ -345,6 +360,11 @@ if [[ -e "/etc/pxnbackups.d/" ]]; then
 	source  "/etc/pxnbackups.d/*.conf"  || exit 1
 fi
 doBackup
+
+
+
+# ----------------------------------------
+# finished
 
 
 
