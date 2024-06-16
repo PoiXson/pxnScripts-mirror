@@ -78,7 +78,7 @@ BACKUP_NAME="<NULL>"
 BACKUP_HOST=""
 BACKUP_PORT=0
 BACKUPS_FAILED=$NO
-BACKUP_EXCLUDES=""
+BACKUP_EXCLUDES=()
 
 
 
@@ -115,7 +115,7 @@ function Port() {
 }
 function Exclude() {
 	if [[ ! -z $1 ]]; then
-		BACKUP_EXCLUDES="$BACKUP_EXCLUDES $1"
+		BACKUP_EXCLUDES+=(" --exclude $1")
 	fi
 }
 
@@ -184,7 +184,7 @@ function doBackup() {
 	rsync -Fyth --progress --partial --archive --delete-delay --delete-excluded \
 		$RSYNC_ARGS                     \
 		$BACKUP_EXCLUDES                \
-		--exclude "$PATH_BACKUPS"       \
+		${BACKUP_EXCLUDES[@]}           \
 		--exclude "/bin"                \
 		--exclude "/boot"               \
 		--exclude "/dev"                \
@@ -232,7 +232,7 @@ function CleanupBackupVars() {
 	BACKUP_NAME="<NULL>"
 	BACKUP_HOST=""
 	BACKUP_PORT=0
-	BACKUP_EXCLUDES=""
+	BACKUP_EXCLUDES=()
 	TIME_START_HOST=$( \date "+%s%N" )
 	TIME_LAST=$TIME_START_HOST
 }
