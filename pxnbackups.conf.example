@@ -7,4 +7,5 @@
 Backup "name"
 	Host "host"
 	Port 22
+#	Source "/home"
 #	Exclude "/ignore/these/files"

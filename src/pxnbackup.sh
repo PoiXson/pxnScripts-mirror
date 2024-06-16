@@ -77,6 +77,7 @@ let COUNT_ACT=0
 BACKUP_NAME="<NULL>"
 BACKUP_HOST=""
 BACKUP_PORT=0
+BACKUP_SOURCE=""
 BACKUPS_FAILED=$NO
 BACKUP_EXCLUDES=()
 
@@ -111,6 +112,11 @@ function Host() {
 function Port() {
 	if [[ ! -z $1 ]]; then
 		BACKUP_Port=$1
+	fi
+}
+function Source() {
+	if [[ ! -z $1 ]]; then
+		BACKUP_SOURCE="$1"
 	fi
 }
 function Exclude() {
@@ -155,10 +161,6 @@ function doBackup() {
 			return
 		fi
 	fi
-	if [[ -z $BACKUP_HOST ]]; then
-		failure "Backup host not set for: $BACKUP_NAME"
-		failure ; exit 1
-	fi
 	if [[ -z $BACKUP_PORT ]]; then
 		BACKUP_PORT=22
 	fi
@@ -180,6 +182,13 @@ function doBackup() {
 		RSYNC_ARGS="$RSYNC_ARGS --verbose"
 	elif [[ $QUIET -eq $YES ]]; then
 		RSYNC_ARGS="$RSYNC_ARGS --quiet"
+	if [[ -z $BACKUP_SOURCE ]]; then
+		BACKUP_SOURCE="/"
+	fi
+	if [[ -z $BACKUP_HOST ]]; then
+		RSYNC_ARGS+=("$BACKUP_SOURCE")
+	else
+		RSYNC_ARGS+=("${BACKUP_HOST}:${BACKUP_SOURCE}")
 	fi
 	rsync -Fyth --progress --partial --archive --delete-delay --delete-excluded \
 		$RSYNC_ARGS                     \
@@ -232,6 +241,7 @@ function CleanupBackupVars() {
 	BACKUP_NAME="<NULL>"
 	BACKUP_HOST=""
 	BACKUP_PORT=0
+	BACKUP_SOURCE=""
 	BACKUP_EXCLUDES=()
 	TIME_START_HOST=$( \date "+%s%N" )
 	TIME_LAST=$TIME_START_HOST
