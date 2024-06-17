@@ -279,7 +279,7 @@ while [ $# -gt 0 ]; do
 			failure ; DisplayHelp $NO ; exit 1
 		fi
 		\shift
-		if [[ "1" = *" "* ]]; then
+		if [[ "$1" = *" "* ]]; then
 			failure "--name flag cannot contain any spaces"
 			failure ; exit 1
 		fi
@@ -290,6 +290,10 @@ while [ $# -gt 0 ]; do
 		if [[ -z $NAME ]]; then
 			failure "--name flag requires a value"
 			failure ; DisplayHelp $NO ; exit 1
+		fi
+		if [[ "$NAME" = *" "* ]]; then
+			failure "--name flag cannot contain any spaces"
+			failure ; exit 1
 		fi
 		BACKUP_FILTERS="$BACKUP_FILTERS $NAME"
 	;;
