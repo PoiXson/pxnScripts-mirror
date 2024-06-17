@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 # Copyright (c) 2007 Heikki Hokkanen <hoxu@users.sf.net>
 # GPL
-set -e
 
 format="%Y-%m-%d %H:%M:%S"
 if [ $# -gt 0 ]; then
