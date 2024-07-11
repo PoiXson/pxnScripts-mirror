@@ -99,7 +99,7 @@ echo "Install.."
 # ps-mem.py
 # https://github.com/pixelb/ps_mem/blob/v3.14/ps_mem.py
 \wget  "https://raw.githubusercontent.com/pixelb/ps_mem/v3.14/ps_mem.py" \
-	-o "%{buildroot}%{_bindir}/ps-mem"  || exit 1
+	-O "%{buildroot}%{_bindir}/ps-mem"  || exit 1
 
 
 
