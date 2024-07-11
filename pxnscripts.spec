@@ -96,6 +96,11 @@ echo "Install.."
 	%{__install} -m 0644  "pingssh.sh"      "%{buildroot}%{_sysconfdir}/profile.d/pingssh.sh"     || exit 1
 \popd  >/dev/null
 
+# ps-mem.py
+# https://github.com/pixelb/ps_mem/blob/v3.14/ps_mem.py
+\wget  "https://raw.githubusercontent.com/pixelb/ps_mem/v3.14/ps_mem.py" \
+	-o "%{buildroot}%{_bindir}/ps-mem"  || exit 1
+
 
 
 %post
@@ -129,6 +134,8 @@ fi
 %attr(0600,-,-) %{_sysconfdir}/pxnbackups.conf.example
 # profile.d
 %{_sysconfdir}/profile.d/pxnscripts.sh
+# ps-mem.py
+%{_bindir}/ps-mem
 
 %files -n pxn-tools
 
