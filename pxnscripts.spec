@@ -104,6 +104,9 @@ echo "Install.."
 
 
 %post
+if [[ ! -e /usr/bin/python ]]; then
+	\ln -sv  /usr/bin/python3 /usr/bin/python  || exit 1
+fi
 if [[ -e "/usr/lib/jvm/" ]]; then
 	if [[ ! -e "/usr/lib/jvm/java-latest" ]]; then
 		\pushd  "/usr/lib/jvm/"  >/dev/null  || exit 1
