@@ -31,3 +31,4 @@ fi
 
 
 alias pxnbackup='clear;pxnbackup'
+alias psmem='clear;ps-mem'
