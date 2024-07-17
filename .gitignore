@@ -37,6 +37,7 @@ ext/
 target/
 vendor/
 coverage/
+.phpunit.cache/
 gradle/
 gradlew
 gradlew.bat
