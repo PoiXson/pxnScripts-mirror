@@ -2,19 +2,20 @@ Name    : pxn-scripts
 Summary : A collection of commonly used shell scripts
 Version : 2.1.%{?build_number}%{!?build_number:x}
 Release : 1
+
+Requires   : bash, wget, curl, rsync, zip, unzip, grep
+Recommends : pxn-aliases, screen
+Provides   : pxnscripts
+Obsoletes  : pxnscripts
+Obsoletes  : shellscripts
+
 BuildArch : noarch
+Packager  : PoiXson <support@poixson.com>
+License   : AGPLv3
+URL       : https://poixson.com/
+
 Prefix: %{_bindir}/pxn/scripts
 %define _rpmfilename  %%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm
-
-License  : AGPLv3
-Packager : PoiXson <support@poixson.com>
-URL      : https://poixson.com/
-
-Requires : bash, wget, curl, rsync, zip, unzip, grep
-Recommends: pxn-aliases, screen
-Provides : pxnscripts
-Obsoletes: pxnscripts
-Obsoletes: shellscripts
 
 
 
