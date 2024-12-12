@@ -66,6 +66,7 @@ alias l.='ll.'
 alias cls='clear;pwd;ls'
 alias cll='clear;pwd;ll'
 alias cld='clear;pwd;ld'
+alias c..='cd ..;cll'
 
 # sort by extension
 alias lx='ls -lXB'
