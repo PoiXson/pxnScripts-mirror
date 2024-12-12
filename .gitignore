@@ -30,6 +30,7 @@ cache/
 *.lock
 !Cargo.lock
 !composer.lock
+thumbs/
 
 bin/
 libs/
@@ -46,6 +47,9 @@ rpmbuild/
 out/
 build/
 build-phar/
+pkg/
+gen/
+tracks/
 Makefile
 Makefile.fragments
 Makefile.objects
@@ -78,9 +82,11 @@ auth.json
 .settings/
 .autotools
 
-*.class
-*.iml
-*.idea
+*.bin
+*.hex
+*.so
+*.exe
+*.iso
 *.jar
 *.gz
 *.tar
@@ -88,21 +94,30 @@ auth.json
 *.zip
 *.rar
 *.rpm
+*.deb
+*.app
+*.class
+*.iml
+*.idea
 *.o
 *.a
+*.ko
 *.la
 *.lo
 *.obj
 *.dll
-*.deb
+*.lib
+*.dylib
 *.apk
 *.war
 *.ear
-*.exe
-*.hex
+*.dump
 *.db
 *.out
 *.output
 *.swp
 .*.swp
 *~
+*.fifo
+*.sock
+*.socket
