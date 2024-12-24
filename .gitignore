@@ -22,15 +22,25 @@ logs/
 
 tmp/
 temp/
+*.tmp
+*.temp
 cache/
 .cache/
 .*_cache/
 .twig_cache/
 .backups/
+*.bak
+*.back
+*.backup
+*.old
+*.orig
+*.original
 *.lock
 !Cargo.lock
 !composer.lock
+Thumbs.db
 thumbs/
+desktop.ini
 
 bin/
 libs/
@@ -43,10 +53,12 @@ gradle/
 gradlew
 gradlew.bat
 *.launch
+*.test
 rpmbuild/
 out/
 build/
 build-phar/
+dist/
 pkg/
 gen/
 tracks/
@@ -81,6 +93,8 @@ auth.json
 .gradle/
 .settings/
 .autotools
+.vscode/
+.idea/
 
 *.bin
 *.hex
@@ -97,8 +111,11 @@ auth.json
 *.deb
 *.app
 *.class
+*.javadoc
 *.iml
 *.idea
+*.rs.bk
+*.pyo
 *.o
 *.a
 *.ko
