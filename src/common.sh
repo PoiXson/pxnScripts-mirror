@@ -136,7 +136,13 @@ function title() {
 	done
 	local _A=$(($LONGEST_LEN+8))
 	local _B=$(($LONGEST_LEN+2))
-	# format A
+	# ****************
+	# ****************
+	# **            **
+	# **  Format A  **
+	# **            **
+	# ****************
+	# ****************
 	case "$TITLE_FORMAT" in
 	A)
 		echo
@@ -154,7 +160,9 @@ function title() {
 		echo -ne "$COLOR_RESET"
 		echo
 	;;
-	# format B
+	# +------------+
+	# |  Format B  |
+	# +------------+
 	B)
 		echo -ne "$COLOR_BROWN"
 		echo -n " +"; eval "printf %.0s'-' {5..$_A}"; echo "+ "
@@ -165,7 +173,7 @@ function title() {
 		echo -n " +"; eval "printf %.0s'-' {5..$_A}"; echo "+ "
 		echo -ne "$COLOR_RESET"
 	;;
-	# format C
+	# [ Format C ]
 	*)
 		for LINE in "${@}"; do
 			local _S=$(($_B-${#LINE}))
