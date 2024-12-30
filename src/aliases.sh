@@ -122,6 +122,9 @@ alias du='\du -h'
 alias du1='\du -h --max-depth=1'
 alias du2='\du -h --max-depth=2'
 alias du3='\du -h --max-depth=3'
+alias cdu1='c;du1'
+alias cdu2='c;du2'
+alias cdu3='c;du3'
 alias mnt='\mount | column -t'
 
 
