@@ -3,7 +3,8 @@ Summary : A collection of commonly used shell scripts
 Version : 2.1.%{?build_number}%{!?build_number:x}
 Release : 1
 
-Requires   : bash, wget, curl, rsync, zip, unzip, grep
+Requires   : bash, wget, curl, rsync, grep
+Requires   : zip, unzip, tar, gzip
 Recommends : pxn-aliases, screen
 Provides   : pxnscripts
 Obsoletes  : pxnscripts
