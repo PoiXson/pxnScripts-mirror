@@ -22,9 +22,7 @@ Prefix: %{_bindir}/pxn/scripts
 
 %package -n pxn-tools
 Summary  : Common useful tools.
-Requires : pxn-scripts, pxn-aliases, pingssh, calc
-Requires : trash-cli, ncdu, tldr, colordiff, inotify-tools
-Requires : htop, nmon, iotop-c, tree, htop, nmon, hexedit
+Requires : pxn-scripts, pxn-aliases, pingssh
 Provides : pxntools
 
 %package -n pxn-aliases
@@ -116,6 +114,19 @@ if [[ -e "/usr/lib/jvm/" ]]; then
 		\popd  >/dev/null
 	fi
 fi
+
+%post -n pxn-tools
+[ -e /usr/bin/htop         ] || \dnf install -y  htop
+[ -e /usr/bin/nmon         ] || \dnf install -y  nmon
+[ -e /usr/sbin/iotop-c     ] || \dnf install -y  iotop-c
+[ -e /usr/bin/tree         ] || \dnf install -y  tree
+[ -e /usr/bin/colordiff    ] || \dnf install -y  colordiff
+[ -e /usr/bin/hexedit      ] || \dnf install -y  hexedit
+[ -e /usr/bin/inotifywatch ] || \dnf install -y  inotify-tools
+[ -e /usr/bin/calc         ] || \dnf install -y  calc
+[ -e /usr/bin/trash        ] || \dnf install -y  trash-cli
+[ -e /usr/bin/ncdu         ] || \dnf install -y  ncdu
+[ -e /usr/bin/tldr         ] || \dnf install -y  tldr
 
 
 
