@@ -7,8 +7,6 @@ Requires   : bash, wget, curl, rsync, grep
 Requires   : zip, unzip, tar, gzip
 Recommends : pxn-aliases, screen
 Provides   : pxnscripts
-Obsoletes  : pxnscripts
-Obsoletes  : shellscripts
 
 BuildArch : noarch
 Packager  : PoiXson <support@poixson.com>
@@ -28,7 +26,6 @@ Provides : pxntools
 %package -n pxn-aliases
 Summary  : Helpful aliases for common shell commands.
 Provides : pxnaliases
-Obsoletes: pxnaliases
 
 %package -n pingssh
 Summary  : Pings a remote host until it's able to connect with ssh.
