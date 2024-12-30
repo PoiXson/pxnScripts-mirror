@@ -30,7 +30,7 @@ Provides : pxnaliases
 %package -n pingssh
 Summary  : Pings a remote host until it's able to connect with ssh.
 Provides : ping-ssh
-Provides : pssh
+Provides : pssh, pingssh
 
 
 
