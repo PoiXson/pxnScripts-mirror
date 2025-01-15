@@ -1,23 +1,24 @@
-Name    : pxn-scripts
-Summary : A collection of commonly used shell scripts
-Version : 2.1.%{?build_number}%{!?build_number:x}
-Release : 1
-
-Requires   : bash, wget, curl, rsync, grep
-Requires   : zip, unzip, tar, gzip
-Recommends : pxn-aliases, screen
-Provides   : pxnscripts
-
+Name      : pxn-scripts
+Summary   : A collection of commonly used shell scripts
+Version   : 2.2.%{?build_number}%{!?build_number:x}
+Release   : 1
 BuildArch : noarch
 Packager  : PoiXson <support@poixson.com>
 License   : AGPLv3
 URL       : https://poixson.com/
 
+Requires  : bash, wget, curl, rsync, grep
+Requires  : zip, unzip, tar, gzip
+Recommends: pxn-aliases, screen
+Provides  : pxnscripts
+
 Prefix: %{_bindir}/pxn/scripts
 %define _rpmfilename  %%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm
+%global source_date_epoch_from_changelog 0
+%define source_date_epoch 0
 
 %description
-A collection of commonly used shell scripts for CentOS and Fedora.
+A collection of commonly used shell scripts for RHEL-based distros.
 
 
 
@@ -28,6 +29,7 @@ echo "Install.."
 
 # create dirs
 %{__install} -d -m 0755  \
+	"%{buildroot}%{_bindir}/"                \
 	"%{buildroot}%{prefix}/"                 \
 	"%{buildroot}%{_sysconfdir}/profile.d/"  \
 		|| exit 1
@@ -42,7 +44,6 @@ echo "Install.."
 	%{__install} -m 0644  "monhost.sh"    "%{buildroot}%{_bindir}/monhost"    || exit 1
 	%{__install} -m 0644  "timestamp.sh"  "%{buildroot}%{_bindir}/timestamp"  || exit 1
 	%{__install} -m 0644  "yesno.sh"      "%{buildroot}%{_bindir}/yesno"      || exit 1
-	%{__install} -m 0644  "sshkeygen.sh"  "%{buildroot}%{_bindir}/sshkeygen"  || exit 1
 	%{__install} -m 0644  "pxnbackup.sh"  "%{buildroot}%{_bindir}/pxnbackup"  || exit 1
 	# /usr/bin/pxn/scripts/
 	%{__install} -m 0644  \
