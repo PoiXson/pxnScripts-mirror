@@ -4,7 +4,7 @@ Version   : 2.2.%{?build_number}%{!?build_number:x}
 Release   : 1
 BuildArch : noarch
 Packager  : PoiXson <support@poixson.com>
-License   : AGPLv3
+License   : AGPLv3+ADD-PXN-V1
 URL       : https://poixson.com/
 
 Requires  : bash, wget, curl, rsync, grep
