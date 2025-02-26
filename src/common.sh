@@ -293,3 +293,15 @@ function find_screen() {
 		echo ${ENTRY%%.*}
 	done
 }
+
+
+
+# -------------------------------------------------------------------------------
+
+
+
+if [[ -z $WDIR ]]; then
+	echo
+	failure "Failed to find current working directory"
+	failure ; exit 1
+fi
