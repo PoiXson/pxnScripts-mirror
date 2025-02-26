@@ -54,8 +54,9 @@ PXNBACKUP_VERSION="{{{VERSION}}}"
 
 
 
-source /usr/bin/pxn/scripts/common.sh  || exit 1
 echo
+SELF="$0"
+source  "/usr/bin/pxn/scripts/common.sh"  || exit 1
 
 
 
@@ -297,7 +298,6 @@ if [[ $# -eq 0 ]]; then
 	DisplayHelp $NO
 	exit 1
 fi
-SELF="$0"
 while [ $# -gt 0 ]; do
 	case "$1" in
 

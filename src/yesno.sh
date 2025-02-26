@@ -62,7 +62,8 @@
 
 
 
-source "/usr/bin/pxn/scripts/common.sh"  || exit 1
+SELF="$0"
+source  "/usr/bin/pxn/scripts/common.sh"  || exit 1
 
 
 
