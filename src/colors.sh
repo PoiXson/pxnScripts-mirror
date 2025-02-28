@@ -1,5 +1,4 @@
 #!/bin/sh
-clear
 source /usr/bin/pxn/scripts/defines.sh
 
 
