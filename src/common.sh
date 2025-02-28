@@ -148,7 +148,7 @@ function echo_cmd() {
 function title() {
 	# format
 	case "$1" in
-	A|B|C)
+	A|B|C|D)
 		TITLE_FORMAT="$1"
 		shift
 	;;
@@ -203,12 +203,17 @@ function title() {
 		echo -n " +"; eval "printf %.0s'-' {5..$_A}"; echo "+ "
 		echo -ne "$COLOR_RESET"
 	;;
-	# [ Format C ]
+	# [ Format C/D ]
 	*)
+		case "$TITLE_FORMAT" in
+		"C") echo -ne "${COLOR_BROWN}"    ;;
+		*)   echo -ne "${COLOR_DARKGRAY}" ;;
+		esac
 		for LINE in "${@}"; do
 			local _S=$(($_B-${#LINE}))
-			echo -ne "${COLOR_BROWN} [ ${LINE}"; eval "printf ' '%.0s {2..$_S}"; echo -e "]${COLOR_RESET}"
+			echo -n " [ ${LINE}"; eval "printf ' '%.0s {2..$_S}"; echo -e "]"
 		done
+		echo -ne "${COLOR_RESET}"
 	;;
 	esac
 }
